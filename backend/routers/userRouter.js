@@ -1,6 +1,6 @@
 // imports
-const express = require('express');
-const { register } = require('../controllers/userController');
+const express = require("express");
+const { register } = require("../controllers/userController");
 
 // router
 const router = express.Router();
@@ -10,11 +10,11 @@ const router = express.Router();
 // register
 // link       /api/v1/register
 // access     public
-router.add('/register', register);
+// router.add('/register', register);
 
 // login
 // link       /api/v1/login
 // access     public
-router.add('/register', login);
+// router.add('/register', login);
 
 module.exports = router;

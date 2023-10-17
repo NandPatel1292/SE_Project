@@ -1,21 +1,23 @@
 // all imports
 const express = require("express");
-const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
+
+// import the dotenv
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv").config();
+}
 
 // all variables
 const app = express();
 const port = process.env.PORT || 3000;
 
-console.log(process.env.PORT);
-
 // config
-dotenv.config();
 app.use(express.json());
 
+console.log(process.env.PORT);
 // all middleware uses
 // user router
-app.use('/api/v1', userRouter);
+app.use("/api/v1", userRouter);
 
 // error handeling
 app.use((err, req, res, next) => {
@@ -26,7 +28,7 @@ app.use((err, req, res, next) => {
     success: false,
     message,
   });
-})
+});
 
 // Server connect
 app.listen(port, function () {
