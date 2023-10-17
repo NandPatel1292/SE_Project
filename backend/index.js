@@ -1,6 +1,6 @@
 // all imports
 const express = require("express");
-const userRouter = require("./routers/userRouter");
+const authRouter = require("./routers/authRouter");
 
 // import the dotenv
 if (process.env.NODE_ENV !== "production") {
@@ -14,10 +14,9 @@ const port = process.env.PORT || 3000;
 // config
 app.use(express.json());
 
-console.log(process.env.PORT);
 // all middleware uses
 // user router
-app.use("/api/v1", userRouter);
+app.use("/api/auth", authRouter);
 
 // error handeling
 app.use((err, req, res, next) => {
