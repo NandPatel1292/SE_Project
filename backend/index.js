@@ -1,6 +1,7 @@
 // all imports
 const express = require("express");
 const dotenv = require("dotenv");
+const userRouter = require("./routers/userRouter");
 
 // all variables
 const app = express();
@@ -10,11 +11,11 @@ console.log(process.env.PORT);
 
 // config
 dotenv.config();
+app.use(express.json());
 
 // all middleware uses
-app.get("/", function (req, res) {
-  res.send("Hello World!");
-});
+// user router
+app.use('/api/v1', userRouter);
 
 // error handeling
 app.use((err, req, res, next) => {
