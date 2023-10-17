@@ -2,4 +2,4 @@
 
 ## Group 6
 
-## BillPay
+## BillPAY
