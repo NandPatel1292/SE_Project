@@ -10,11 +10,11 @@ const router = express.Router();
 // register
 // link       /api/auth/register
 // access     public
-router.route('/register').get(register);
+router.route('/register').post(register);
 
 // login
 // link       /api/auth/login
 // access     public
-router.route('/login').get(login);
+router.route('/login').post(login);
 
 module.exports = router;

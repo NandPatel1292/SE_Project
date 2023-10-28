@@ -1,7 +1,8 @@
 // imports
-const User = require('../models/User')
+const User = require('../models/userModel.js')
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { errorHandeler } = require('../utils/errorHandler.js');
 
 module.exports = {
 
@@ -9,9 +10,15 @@ module.exports = {
     registerCall: async (name, email, password) => {
         try {
 
+            let user = await User.findOne({ email });
+
+            if (user) {
+                errorHandeler("User already exists", 400);
+            }
+
             const hashedpassword = await bcrypt.hash(password, 10)
 
-            const user = await User.create({
+            user = await User.create({
                 name,
                 email,
                 password: hashedpassword
@@ -29,20 +36,16 @@ module.exports = {
             const user = await User.findOne({ email })
 
             if (!user) {
-                const error = new Error("User not found");
-                error.statusCode = 404;
-                throw error;
+                errorHandeler("User not found", 404);
             }
 
-            const isMatch = await user.matchPassword(password)
+            const isMatch = await bcrypt.compare(password, user.password)
 
             if (!isMatch) {
-                const error = new Error("Invalid credentials");
-                error.statusCode = 401;
-                throw error;
+                errorHandeler("Invalid credentials", 401);
             }
 
-            const expiresIn = process.env.JWT_EXPIRE || '1d';
+            const expiresIn = process.env.JWT_EXPIRE || '7d';
             const jwtSecret = process.env.JWT_SECRET || "sdvbuhsabsduf67237472317";
 
             const token = jwt.sign(

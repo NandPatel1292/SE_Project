@@ -1,7 +1,7 @@
 // all importss
 const mongoose = require("mongoose");
 
-export const connect = async () => {
+const connect = async () => {
     try {
         const url = process.env.MONGO_URI || "";
         const connected = await mongoose.connect(url);
@@ -13,4 +13,8 @@ export const connect = async () => {
     } catch (error) {
         console.log(error);
     }
+}
+
+module.exports = {
+    connect
 }

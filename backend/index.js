@@ -1,6 +1,7 @@
 // all imports
 const express = require("express");
 const authRouter = require("./routers/authRouter");
+const { connect } = require("./utils/database");
 
 // import the dotenv
 if (process.env.NODE_ENV !== "production") {
@@ -30,6 +31,10 @@ app.use((err, req, res, next) => {
 });
 
 // Server connect
-app.listen(port, function () {
+app.listen(port, async () => {
+  // connect to database
+  await connect();
+
+  // console.log
   console.log("Example app listening on port 3000!");
 });

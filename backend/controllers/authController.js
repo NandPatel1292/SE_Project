@@ -1,5 +1,5 @@
 const { registerCall, loginCall } = require("../helper/authHelper");
-
+const { errorHandeler } = require("../utils/errorHandler");
 
 module.exports = {
     // register
@@ -9,10 +9,7 @@ module.exports = {
             const { email, password, name } = req.body;
 
             if (!email || !password || !name) {
-
-                const error = new Error("Please fill all the fields");
-                error.statusCode = 400;
-                throw error;
+                errorHandeler("Please fill all the fields", 400);
             }
 
             const user = await registerCall(name, email, password);
@@ -35,21 +32,31 @@ module.exports = {
             const { email, password } = req.body;
 
             if (!email || !password) {
-                const error = new Error("Please fill all the fields");
-                error.statusCode = 400;
-                throw error;
+                errorHandeler("Please fill all the fields", 400);
+            }
+
+            let re = /\S+@\S+\.\S+/;
+
+
+            if (!re.test(email)) {
+
             }
 
             const { token, user } = await loginCall(email, password);
 
-            return res.status(200).json({
-                success: true,
-                message: "User logged in successfully",
-                data: {
-                    token,
-                    user
-                }
-            });
+            return res
+                .cookie("token", token, {
+                    httpOnly: true,
+                    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+                })
+                .status(200).json({
+                    success: true,
+                    message: "User logged in successfully",
+                    data: {
+                        token,
+                        user
+                    }
+                });
 
         } catch (error) {
             next(error);
