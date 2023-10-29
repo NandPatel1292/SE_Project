@@ -1,4 +1,4 @@
-// imports
+// package imports
 const jwt = require("jsonwebtoken")
 
 const verifyToken = async (req, res, next) => {

@@ -1,4 +1,4 @@
-// imports
+// file imports
 const { errorHandeler } = require('../utils/errorHandler');
 const {
     deleteUserCall,
@@ -129,6 +129,18 @@ module.exports = {
                 message: "Premium access granted successfully",
                 data: user
             });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    // create checkout session
+    // link       /api/user/create-checkout-session
+    createCheckoutSession: async (req, res, next) => {
+        try {
+
+
 
         } catch (error) {
             next(error);

@@ -1,7 +1,9 @@
-// imports
-const User = require('../models/userModel.js')
+// package imports
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+
+// file imports
+const User = require('../models/userModel.js')
 const { errorHandeler } = require('../utils/errorHandler.js');
 
 module.exports = {

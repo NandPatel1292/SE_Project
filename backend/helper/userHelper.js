@@ -1,7 +1,9 @@
-// imports
+// package imports
+const bcrypt = require('bcryptjs')
+
+// file imports
 const User = require('../models/userModel');
 const { errorHandeler } = require('../utils/errorHandler.js');
-const bcrypt = require('bcryptjs')
 
 module.exports = {
 

@@ -1,5 +1,7 @@
-// imports
+// package imports
 const express = require("express");
+
+// file imports
 const {
     register,
     login,
