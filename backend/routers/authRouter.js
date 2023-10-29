@@ -1,6 +1,7 @@
 // imports
 const express = require("express");
-const { register, login } = require("../controllers/authController");
+const { register, login, logout } = require("../controllers/authController");
+const verifyToken = require("../middleware/tokenAuth");
 
 // router
 const router = express.Router();
@@ -16,5 +17,10 @@ router.route('/register').post(register);
 // link       /api/auth/login
 // access     public
 router.route('/login').post(login);
+
+// logout
+// link       /api/auth/logout
+// access     private
+router.route('/logout').get(verifyToken, logout);
 
 module.exports = router;

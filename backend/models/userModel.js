@@ -17,6 +17,36 @@ const userSchema = new mongoose.Schema(
             required: [true, 'Please provide your password'],
             trim: true,
         },
+        trial: {
+            type: Boolean,
+            default: false,
+        },
+        subscription: {
+            type: Boolean,
+            default: false,
+        },
+        startedAt: {
+            type: Date,
+            default: null,
+        },
+        payment: {
+            transferId: {
+                type: String,
+                default: null,
+            },
+            amount: {
+                type: Number,
+                default: null,
+            },
+            transferDate: {
+                type: Date,
+                default: null,
+            },
+        },
+        expiresAt: {
+            type: Date,
+            default: null,
+        },
     },
     {
         timestamps: true,

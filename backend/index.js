@@ -1,7 +1,9 @@
 // all imports
 const express = require("express");
 const authRouter = require("./routers/authRouter");
+const userRouter = require("./routers/userRouter");
 const { connect } = require("./utils/database");
+const cookieParser = require("cookie-parser");
 
 // import the dotenv
 if (process.env.NODE_ENV !== "production") {
@@ -14,10 +16,14 @@ const port = process.env.PORT || 3000;
 
 // config
 app.use(express.json());
+app.use(cookieParser());
 
 // all middleware uses
-// user router
+// auth router
 app.use("/api/auth", authRouter);
+
+// user router
+app.use("/api/user", userRouter);
 
 // error handeling
 app.use((err, req, res, next) => {
@@ -36,5 +42,5 @@ app.listen(port, async () => {
   await connect();
 
   // console.log
-  console.log("Example app listening on port 3000!");
+  console.log(`Server listening on port ${port}!`);
 });

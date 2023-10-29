@@ -3,7 +3,7 @@ const { errorHandeler } = require("../utils/errorHandler");
 
 module.exports = {
     // register
-    // link       /api/v1/register
+    // link       /api/auth/register
     register: async (req, res, next) => {
         try {
             const { email, password, name } = req.body;
@@ -26,7 +26,7 @@ module.exports = {
     },
 
     // login
-    // link       /api/v1/login
+    // link       /api/auth/login
     login: async (req, res, next) => {
         try {
             const { email, password } = req.body;
@@ -61,6 +61,22 @@ module.exports = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    // logout
+    // link       /api/auth/logout
+    logout: async (req, res, next) => {
+        try {
+            return res
+                .clearCookie("token")
+                .status(200).json({
+                    success: true,
+                    message: "User logged out successfully",
+                });
+
+        } catch (error) {
+            next(error);
+        }
+    },
 
 }
