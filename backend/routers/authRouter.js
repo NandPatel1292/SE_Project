@@ -1,6 +1,11 @@
 // imports
 const express = require("express");
-const { register, login, logout } = require("../controllers/authController");
+const {
+    register,
+    login,
+    logout,
+    googleLogin
+} = require("../controllers/authController");
 const verifyToken = require("../middleware/tokenAuth");
 
 // router
@@ -22,5 +27,10 @@ router.route('/login').post(login);
 // link       /api/auth/logout
 // access     private
 router.route('/logout').get(verifyToken, logout);
+
+// google login
+// link       /api/auth/google-login
+// access     private
+router.route('/google-login').get(verifyToken, googleLogin);
 
 module.exports = router;

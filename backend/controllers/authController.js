@@ -1,5 +1,9 @@
-const { registerCall, loginCall } = require("../helper/authHelper");
 const { errorHandeler } = require("../utils/errorHandler");
+const {
+    registerCall,
+    loginCall,
+    googleLoginCall
+} = require("../helper/authHelper");
 
 module.exports = {
     // register
@@ -72,6 +76,34 @@ module.exports = {
                 .status(200).json({
                     success: true,
                     message: "User logged out successfully",
+                });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    // google login
+    // link       /api/auth/google-login
+    googleLogin: async (req, res, next) => {
+        try {
+            const { name, email, image } = req.body;
+
+            if (!email || !image || !name) {
+                errorHandeler("Please fill all the fields", 400);
+            }
+
+            const data = await googleLoginCall(name, email, image);
+
+            return res
+                .cookie("token", data.token, {
+                    httpOnly: true,
+                    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+                })
+                .status(200).json({
+                    success: true,
+                    message: "User logged in successfully",
+                    data: data.user,
                 });
 
         } catch (error) {

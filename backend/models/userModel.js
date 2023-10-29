@@ -17,7 +17,19 @@ const userSchema = new mongoose.Schema(
             required: [true, 'Please provide your password'],
             trim: true,
         },
-        trial: {
+        image: {
+            type: String,
+            default: null,
+        },
+        isOnTrial: {
+            type: Boolean,
+            default: false,
+        },
+        isOnPremium: {
+            type: Boolean,
+            default: false,
+        },
+        isTrialUsed: {
             type: Boolean,
             default: false,
         },
