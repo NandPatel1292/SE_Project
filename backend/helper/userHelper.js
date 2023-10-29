@@ -135,6 +135,8 @@ module.exports = {
                 errorHandeler("You are already on premium", 400);
             }
 
+            // TODO: Payment gateway integration remaining
+
             user.isOnPremium = true;
             user.startedAt = Date.now();
             user.expiresAt = Date.now() + period * 30 * 24 * 60 * 60 * 1000;
