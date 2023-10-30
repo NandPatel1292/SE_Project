@@ -56,6 +56,14 @@ const userSchema = new mongoose.Schema(
             type: Date,
             default: null,
         },
+        // gstNUmber: {
+        //     type: String,
+        //     default: null,
+        // },
+        // orginationName: {
+        //     type: String,
+        //     default: null,
+        // },
     },
     {
         timestamps: true,
