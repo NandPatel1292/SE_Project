@@ -139,6 +139,8 @@ module.exports = {
 
             // TODO: Payment gateway integration remaining
 
+            // TODO: Update the payment information after payment completed
+
             user.isOnPremium = true;
             user.startedAt = Date.now();
             user.expiresAt = Date.now() + period * 30 * 24 * 60 * 60 * 1000;

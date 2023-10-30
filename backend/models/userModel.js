@@ -34,10 +34,6 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
-        subscription: {
-            type: Boolean,
-            default: false,
-        },
         startedAt: {
             type: Date,
             default: null,
