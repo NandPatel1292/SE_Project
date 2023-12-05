@@ -11,6 +11,10 @@ import {
 } from "react-router-dom";
 
 import Login from "./components/Login.jsx";
+import BillProducts from "./pages/BillProducts.jsx";
+import AddProduct from "./pages/AddProduct.jsx";
+import GenerateBill from "./pages/GenerateBill.jsx";
+import ManageFeatures from "./pages/ManageFeatures.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

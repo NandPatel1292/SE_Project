@@ -14,7 +14,7 @@ const Login = () => {
           </span>
         </div>
         <div className="flex bg-blue-900 w-2/4 justify-center items-center">
-          <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+          <div className="flex min-h-full h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
               <h2 className="w-full text-white mb-5 text-5xl font-bold font-['Inter'] tracking-tight">
                 Log in
