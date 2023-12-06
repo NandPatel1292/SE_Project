@@ -153,5 +153,18 @@ module.exports = {
         }
     },
 
-    // 
+    // Get user details call
+    getUserDetailsCall: async (userId) => {
+        try {
+            const user = await User.findById(userId);
+
+            if (!user) {
+                errorHandeler("User not found", 404);
+            }
+
+            return user;
+        } catch (error) {
+            throw error
+        }
+    }
 }

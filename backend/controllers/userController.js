@@ -1,11 +1,13 @@
 // file imports
 const { errorHandeler } = require('../utils/errorHandler');
+
 const {
     deleteUserCall,
     changePasswordCall,
     changeUserDetailsCall,
     trialAccessCall,
     premiumAccessCall,
+    getUserDetailsCall,
 } = require('../helper/userHelper');
 
 module.exports = {
@@ -135,15 +137,34 @@ module.exports = {
         }
     },
 
-    // create checkout session
-    // link       /api/user/create-checkout-session
-    createCheckoutSession: async (req, res, next) => {
+    // get user details
+    // link       /api/user/details
+    getUserDetails: async (req, res, next) => {
         try {
+            const { userId } = req.user;
 
+            const user = await getUserDetailsCall(userId);
 
+            return res.status(200).json({
+                success: true,
+                message: "User details fetched successfully",
+                data: user
+            });
 
         } catch (error) {
-            next(error);
+            next(error)
         }
-    },
+    }
+
+    // create checkout session
+    // link       /api/user/create-checkout-session
+    // createCheckoutSession: async (req, res, next) => {
+    //     try {
+
+
+
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
 }

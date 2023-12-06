@@ -8,6 +8,7 @@ const {
     changeUserDetails,
     trialAccess,
     premiumAccess,
+    getUserDetails,
 } = require("../controllers/userController");
 const verifyToken = require("../middleware/tokenAuth");
 
@@ -41,9 +42,14 @@ router.route('/trial-access').post(verifyToken, trialAccess);
 // access     private
 router.route('/premium-access').post(verifyToken, premiumAccess);
 
+// Fetch user details
+// link       /api/user/details
+// access     private
+router.route('/details').get(verifyToken, getUserDetails);
+
 // create checkout session
 // link       /api/user/create-checkout-session
 // access     private
-router.route('/create-checkout-session').post(verifyToken, premiumAccess);
+// router.route('/create-checkout-session').post(verifyToken, premiumAccess);
 
 module.exports = router;
