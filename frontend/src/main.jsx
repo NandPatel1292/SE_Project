@@ -18,7 +18,7 @@ import ManageFeatures from "./pages/ManageFeatures.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="" element={<Login />}>
+    <Route path="" element={<BillProducts />}>
       <Route path="login" element={<Login />} />
     </Route>
   )
