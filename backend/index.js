@@ -7,6 +7,7 @@ const cors = require("cors");
 const { connect } = require("./utils/database");
 const authRouter = require("./routers/authRouter");
 const userRouter = require("./routers/userRouter");
+const productRouter = require("./routers/productRouter");
 
 // import the dotenv
 if (process.env.NODE_ENV !== "production") {
@@ -28,6 +29,9 @@ app.use("/api/auth", authRouter);
 
 // user router
 app.use("/api/user", userRouter);
+
+// product router
+app.use("/api/product", productRouter);
 
 // error handeling
 app.use((err, req, res, next) => {
