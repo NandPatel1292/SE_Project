@@ -10,6 +10,9 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
+import store from "./app/store";
+import { Provider } from "react-redux";
+
 import Login from "./components/Login.jsx";
 import BillProducts from "./pages/BillProducts.jsx";
 import AddProduct from "./pages/AddProduct.jsx";
@@ -18,8 +21,12 @@ import ManageFeatures from "./pages/ManageFeatures.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="" element={<BillProducts />}>
+    <Route path="" element={<App />}>
       <Route path="login" element={<Login />} />
+      <Route path="page1" element={<BillProducts />} />
+      <Route path="page2" element={<AddProduct />} />
+      <Route path="page3" element={<GenerateBill />} />
+      <Route path="page4" element={<ManageFeatures />} />
     </Route>
   )
 );
@@ -27,7 +34,7 @@ const router = createBrowserRouter(
 axios.defaults.baseURL = "http://localhost:3000";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </Provider>
 );
