@@ -13,7 +13,7 @@ export const login = createAsyncThunk("auth/login", async (user) => {
     const response = await axios.post("/api/users/login", user);
     return response.data;
   } catch (error) {
-    return error.response.data.message || "login failed";
+    return error.response.data.message;
   }
 });
 
@@ -22,7 +22,7 @@ export const register = createAsyncThunk("auth/register", async (user) => {
     const response = await axios.post("/api/users/register", user);
     return response.data;
   } catch (error) {
-    return error.response.data.message || "register failed";
+    return error.response.data.message;
   }
 });
 
@@ -31,7 +31,7 @@ export const logout = createAsyncThunk("auth/logout", async (_) => {
     const responce = await axios.post("/api/users/logout");
     return responce.data;
   } catch (error) {
-    return error.response.data.message || "logout failed";
+    return error.response.data.message;
   }
 });
 

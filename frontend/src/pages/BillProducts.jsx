@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
 import Table from "../components/Table";
 import Button from "../components/Button";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "../features/auth/authSclice";
 
 const BillProducts = () => {
+  const checkAuth = useSelector(selectIsAuthenticated);
+
   const [tableBodyDate, setTableBodyDate] = useState([]);
   const [tableHeaders, setTableHeaders] = useState([
     "No.",
@@ -111,6 +115,7 @@ const BillProducts = () => {
   };
   return (
     <div>
+      <div className="text-green-600">{checkAuth ? "nand" : "patel"}</div>
       <SearchBox />
       <Table tableHeaders={tableHeaders} tableBodyDate={tableBodyDate} />
 
