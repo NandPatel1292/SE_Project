@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema(
             required: [true, 'Please provide your password'],
             trim: true,
         },
-        image: {
-            type: String,
-            default: null,
-        },
         isOnTrial: {
             type: Boolean,
             default: false,
@@ -56,14 +52,26 @@ const userSchema = new mongoose.Schema(
             type: Date,
             default: null,
         },
-        // gstNUmber: {
-        //     type: String,
-        //     default: null,
-        // },
-        // orginationName: {
-        //     type: String,
-        //     default: null,
-        // },
+        gstNumber: {
+            type: String,
+            default: null,
+        },
+        orginationName: {
+            type: String,
+            default: null,
+        },
+        address: {
+            type: String,
+            default: null,
+        },
+        numberOfCounters: {
+            type: Number,
+            default: null,
+        },
+        contactNumber: {
+            type: Number,
+            default: null,
+        },
     },
     {
         timestamps: true,

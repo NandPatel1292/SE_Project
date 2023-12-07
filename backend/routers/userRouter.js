@@ -6,9 +6,9 @@ const {
     deleteUser,
     changePassword,
     changeUserDetails,
-    trialAccess,
-    premiumAccess,
+    accessBillPe,
     getUserDetails,
+    updateOrganisationDetails,
 } = require("../controllers/userController");
 const verifyToken = require("../middleware/tokenAuth");
 
@@ -32,20 +32,20 @@ router.route('/change-password').patch(verifyToken, changePassword);
 // access     private
 router.route('/change-user-details').patch(verifyToken, changeUserDetails);
 
-// trial access
-// link       /api/user/trial-access
+// trial access & premium access
+// link       /api/user/access?type=trial
 // access     private
-router.route('/trial-access').post(verifyToken, trialAccess);
-
-// premium access
-// link       /api/user/premium-access
-// access     private
-router.route('/premium-access').post(verifyToken, premiumAccess);
+router.route('/access').post(verifyToken, accessBillPe);
 
 // Fetch user details
 // link       /api/user/details
 // access     private
 router.route('/details').get(verifyToken, getUserDetails);
+
+// add organisation details
+// link       /api/user/update-organisation-details
+// access     private
+router.route('/update-organisation-details').patch(verifyToken, updateOrganisationDetails);
 
 // create checkout session
 // link       /api/user/create-checkout-session

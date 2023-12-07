@@ -58,7 +58,7 @@ module.exports = {
     },
 
     // chnageUserDetailsCall
-    changeUserDetailsCall: async (userId, name, email, image) => {
+    changeUserDetailsCall: async (userId, name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber) => {
         try {
             const user = await User.findById(userId);
 
@@ -76,7 +76,34 @@ module.exports = {
 
             user.name = name || user.name;
             user.email = email || user.email;
-            user.image = image || user.image;
+            user.gstNumber = gstNumber || user.gstNumber;
+            user.orginationName = orginationName || user.orginationName;
+            user.address = address || user.address;
+            user.numberOfCounters = numberOfCounters || user.numberOfCounters;
+            user.contactNumber = contactNumber || user.contactNumber;
+
+            await user.save();
+
+            return user;
+        } catch (error) {
+            throw error
+        }
+    },
+
+    // update info using more details
+    updateOrganisationDetailsCall: async (userId, gstNumber, orginationName, address, numberOfCounters, contactNumber) => {
+        try {
+            const user = await User.findById(userId);
+
+            if (!user) {
+                errorHandeler("User not found", 404);
+            }
+
+            user.gstNumber = gstNumber || user.gstNumber;
+            user.orginationName = orginationName || user.orginationName;
+            user.address = address || user.address;
+            user.numberOfCounters = numberOfCounters || user.numberOfCounters;
+            user.contactNumber = contactNumber || user.contactNumber;
 
             await user.save();
 
@@ -87,7 +114,7 @@ module.exports = {
     },
 
     // trial access call
-    trialAccessCall: async (userId) => {
+    accessBillPeCall: async (type, userId) => {
         try {
             const user = await User.findById(userId);
 
@@ -99,55 +126,42 @@ module.exports = {
                 errorHandeler("You are already on trial", 400);
             }
 
-            if (user.isTrialUsed) {
-                errorHandeler("You have already used your trial", 400);
+            if (type === 'trial') {
+                if (user.isTrialUsed) {
+                    errorHandeler("You have already used your trial", 400);
+                }
+
+                if (user.isOnPremium) {
+                    errorHandeler("You are already on premium", 400);
+                }
+
+                user.isOnTrial = true;
+                user.isTrialUsed = true;
+                user.startedAt = Date.now();
+                user.expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days trial period available and accessed
+
+                await user.save();
+
+                return user;
+
+            } else {
+                if (user.isOnPremium) {
+                    errorHandeler("You are already on premium", 400);
+                }
+
+                // TODO: Payment gateway integration remaining
+
+                // TODO: Update the payment information after payment completed
+
+                user.isOnPremium = true;
+                user.startedAt = Date.now();
+                user.expiresAt = Date.now() + period * 30 * 24 * 60 * 60 * 1000;
+
+                await user.save();
+
+                return user;
             }
 
-            if (user.isOnPremium) {
-                errorHandeler("You are already on premium", 400);
-            }
-
-            user.isOnTrial = true;
-            user.isTrialUsed = true;
-            user.startedAt = Date.now();
-            user.expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days trial period available and accessed
-
-            await user.save();
-
-            return user;
-        } catch (error) {
-            throw error
-        }
-    },
-
-    // premium access call
-    premiumAccessCall: async (userId, period) => {
-        try {
-            const user = await User.findById(userId);
-
-            if (!user) {
-                errorHandeler("User not found", 404);
-            }
-
-            if (user.isOnTrial) {
-                errorHandeler("You are already on trial", 400);
-            }
-
-            if (user.isOnPremium) {
-                errorHandeler("You are already on premium", 400);
-            }
-
-            // TODO: Payment gateway integration remaining
-
-            // TODO: Update the payment information after payment completed
-
-            user.isOnPremium = true;
-            user.startedAt = Date.now();
-            user.expiresAt = Date.now() + period * 30 * 24 * 60 * 60 * 1000;
-
-            await user.save();
-
-            return user;
         } catch (error) {
             throw error
         }

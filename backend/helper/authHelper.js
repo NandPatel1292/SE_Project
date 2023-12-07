@@ -1,10 +1,10 @@
 // package imports
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 // file imports
 const User = require('../models/userModel.js')
 const { errorHandeler } = require('../utils/errorHandler.js');
+const generateToken = require('../utils/generateToken.js');
 
 module.exports = {
 
@@ -26,7 +26,9 @@ module.exports = {
                 password: hashedpassword
             })
 
-            return user
+            const token = generateToken(user._id)
+
+            return { token, user }
         } catch (error) {
             throw error
         }
@@ -47,18 +49,7 @@ module.exports = {
                 errorHandeler("Invalid credentials", 401);
             }
 
-            const expiresIn = process.env.JWT_EXPIRE || '7d';
-            const jwtSecret = process.env.JWT_SECRET || "sdvbuhsabsduf67237472317";
-
-            const token = jwt.sign(
-                {
-                    id: user._id
-                },
-                jwtSecret,
-                {
-                    expiresIn: expiresIn
-                }
-            )
+            const token = generateToken(user._id)
 
             return { token, user }
         } catch (error) {

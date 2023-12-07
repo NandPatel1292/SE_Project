@@ -5,9 +5,9 @@ const {
     deleteUserCall,
     changePasswordCall,
     changeUserDetailsCall,
-    trialAccessCall,
-    premiumAccessCall,
+    accessBillPeCall,
     getUserDetailsCall,
+    updateOrganisationDetailsCall,
 } = require('../helper/userHelper');
 
 module.exports = {
@@ -76,9 +76,9 @@ module.exports = {
 
             const { userId } = req.user;
 
-            const { name, email, image } = req.body;
+            const { name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber } = req.body;
 
-            const user = await changeUserDetailsCall(userId, name, email, image);
+            const user = await changeUserDetailsCall(userId, name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber);
 
             return res.status(200).json({
                 success: true,
@@ -92,43 +92,19 @@ module.exports = {
     },
 
     // trial access
-    // link       /api/user/trial-access
-    trialAccess: async (req, res, next) => {
+    // link       /api/user/access
+    accessBillPe: async (req, res, next) => {
         try {
+
+            const { type } = req.query;
 
             const { userId } = req.user;
 
-            const user = await trialAccessCall(userId);
+            const user = await accessBillPeCall(type, userId);
 
             return res.status(200).json({
                 success: true,
                 message: "Trial access granted successfully",
-                data: user
-            });
-
-        } catch (error) {
-            next(error);
-        }
-    },
-
-    // premium access
-    // link       /api/user/premium-access
-    premiumAccess: async (req, res, next) => {
-        try {
-
-            const { period } = req.body;
-
-            const { userId } = req.user;
-
-            if (!period) {
-                errorHandeler("Period is required", 400);
-            }
-
-            const user = await premiumAccessCall(userId, period);
-
-            return res.status(200).json({
-                success: true,
-                message: "Premium access granted successfully",
                 data: user
             });
 
@@ -154,7 +130,33 @@ module.exports = {
         } catch (error) {
             next(error)
         }
-    }
+    },
+
+    // add organisation details
+    // link       /api/user/update-organisation-details
+    updateOrganisationDetails: async (req, res, next) => {
+        try {
+
+            const { userId } = req.user;
+
+            const { gstNumber, orginationName, address, numberOfCounters, contactNumber } = req.body;
+
+            if (!gstNumber || !orginationName || !address || !numberOfCounters || !contactNumber) {
+                errorHandeler("Please fill all the fields", 400);
+            }
+
+            const user = await updateOrganisationDetailsCall(userId, gstNumber, orginationName, address, numberOfCounters, contactNumber);
+
+            return res.status(200).json({
+                success: true,
+                message: "Organisation details updated successfully",
+                data: user
+            });
+
+        } catch (error) {
+            next(error);
+        }
+    },
 
     // create checkout session
     // link       /api/user/create-checkout-session

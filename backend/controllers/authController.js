@@ -17,13 +17,21 @@ module.exports = {
                 errorHandeler("Please fill all the fields", 400);
             }
 
-            const user = await registerCall(name, email, password);
+            const { token, user } = await registerCall(name, email, password);
 
-            return res.status(201).json({
-                success: true,
-                message: "User registered successfully",
-                data: user
-            });
+            return res
+                .cookie("token", token, {
+                    httpOnly: true,
+                    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+                })
+                .status(200).json({
+                    success: true,
+                    message: "User Sign up successfully",
+                    data: {
+                        token,
+                        user
+                    }
+                });
 
         } catch (error) {
             next(error);
@@ -40,12 +48,10 @@ module.exports = {
                 errorHandeler("Please fill all the fields", 400);
             }
 
-            let re = /\S+@\S+\.\S+/;
-
-
-            if (!re.test(email)) {
-
-            }
+            // email validation
+            // let re = /\S+@\S+\.\S+/;
+            // if (!re.test(email)) {
+            // }
 
             const { token, user } = await loginCall(email, password);
 
