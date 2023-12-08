@@ -8,6 +8,7 @@ const { connect } = require("./utils/database");
 const authRouter = require("./routers/authRouter");
 const userRouter = require("./routers/userRouter");
 const productRouter = require("./routers/productRouter");
+const billRouter = require("./routers/billRouter");
 
 // import the dotenv
 if (process.env.NODE_ENV !== "production") {
@@ -32,6 +33,9 @@ app.use("/api/user", userRouter);
 
 // product router
 app.use("/api/product", productRouter);
+
+// bill router
+app.use("/api/bill", billRouter);
 
 // error handeling
 app.use((err, req, res, next) => {

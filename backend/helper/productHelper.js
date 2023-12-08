@@ -1,5 +1,6 @@
 // file imports
 const Product = require('../models/productModel');
+const { errorHandeler } = require('../utils/errorHandler');
 
 module.exports = {
     // add product call
@@ -98,7 +99,7 @@ module.exports = {
 
             return product;
         } catch (error) {
-            next(error);
+            throw error;
         }
     },
 
@@ -118,7 +119,7 @@ module.exports = {
 
             return product;
         } catch (error) {
-            next(error);
+            throw error;
         }
     },
 
@@ -140,7 +141,7 @@ module.exports = {
 
             return product;
         } catch (error) {
-            next(error);
+            throw error;
         }
     },
 }
