@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 const initialState = {
-  user: null,
+  user: user ? user : null,
   isAuthenticated: false,
   error: null,
   loading: false,
@@ -10,7 +12,8 @@ const initialState = {
 
 export const login = createAsyncThunk("auth/login", async (user) => {
   try {
-    const response = await axios.post("/api/users/login", user);
+    const response = await axios.post("/api/auth/login", user);
+    localStorage.setItem("user", JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     return error.response.data.message;
@@ -19,17 +22,19 @@ export const login = createAsyncThunk("auth/login", async (user) => {
 
 export const register = createAsyncThunk("auth/register", async (user) => {
   try {
-    const response = await axios.post("/api/users/register", user);
+    const response = await axios.post("/api/auth/register", user);
+    localStorage.setItem("user", JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     return error.response.data.message;
   }
 });
 
-export const logout = createAsyncThunk("auth/logout", async (_) => {
+export const logout = createAsyncThunk("auth/logout", async () => {
   try {
-    const responce = await axios.post("/api/users/logout");
-    return responce.data;
+    const response = await axios.get("/api/auth/logout");
+    localStorage.removeItem("user");
+    return response.data;
   } catch (error) {
     return error.response.data.message;
   }

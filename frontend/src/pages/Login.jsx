@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login, selectIsAuthenticated } from "../features/auth/authSclice";
+import {
+  login,
+  selectError,
+  selectIsAuthenticated,
+  selectLoading,
+  selectUser,
+} from "../features/auth/authSclice";
 import BillpayLogo from "../components/BillpayLogo";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const checkAuth = useSelector(selectIsAuthenticated);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const User = useSelector(selectUser);
+  const isLoading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -22,8 +31,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginForm));
-    navigate("/page1");
   };
+
+  useEffect(() => {
+    if (isAuthenticated && User && error === null) {
+      navigate("/features");
+    }
+  }, [isAuthenticated, User, navigate, dispatch]);
 
   return (
     <>

@@ -19,16 +19,18 @@ import AddProduct from "./pages/AddProduct.jsx";
 import GenerateBill from "./pages/GenerateBill.jsx";
 import ManageFeatures from "./pages/ManageFeatures.jsx";
 import SignUp from "./pages/SignUp.jsx";
+import AddDetails from "./pages/AddDetails.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<App />}>
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="add-details" element={<AddDetails />} />
+      <Route path="features" element={<ManageFeatures />} />
       <Route path="page1" element={<BillProducts />} />
       <Route path="page2" element={<AddProduct />} />
       <Route path="page3" element={<GenerateBill />} />
-      <Route path="page4" element={<ManageFeatures />} />
     </Route>
   )
 );
