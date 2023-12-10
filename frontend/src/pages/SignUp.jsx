@@ -30,9 +30,9 @@ const SignUp = () => {
     setSignUpForm({ ...signUpForm, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(register(signUpForm));
+    const res = await dispatch(register(signUpForm));
   };
 
   const handleClearError = () => {

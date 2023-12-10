@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
 import Table from "../components/Table";
 import Button from "../components/Button";
-import { useSelector } from "react-redux";
-import { selectIsAuthenticated } from "../features/auth/authSclice";
+
+import { useNavigate } from "react-router";
 
 const BillProducts = () => {
-  const checkAuth = useSelector(selectIsAuthenticated);
+  const navigate = useNavigate();
 
   const [tableBodyDate, setTableBodyDate] = useState([]);
   const [tableHeaders, setTableHeaders] = useState([
@@ -84,42 +84,21 @@ const BillProducts = () => {
         Brand: "ItalianTaste",
         Category: "Pasta",
       },
-      {
-        Product: "9988776655",
-        Item: "Tomatoes",
-        Weight: "1kg",
-        Rate: "3",
-        Disc: "0",
-        Amount: "3",
-        Brand: "FreshProduce",
-        Category: "Vegetables",
-      },
-      {
-        Product: "4433221100",
-        Item: "Chicken Breast",
-        Weight: "500g",
-        Rate: "12",
-        Disc: "5",
-        Amount: "11.40",
-        Brand: "MeatMaster",
-        Category: "Meat",
-      },
     ]);
   }, []);
 
   const handleAddProduct = () => {
     console.log("Added Product");
+    navigate("/add-product");
   };
   const handleDeleteProduct = () => {
     console.log("Added Product");
   };
   return (
     <div>
-      <div className="text-green-600">{checkAuth ? "nand" : "patel"}</div>
       <SearchBox />
       <Table tableHeaders={tableHeaders} tableBodyDate={tableBodyDate} />
-
-      <div className="flex">
+      <div className="flex flex-row ml-2 pb-4 gap-5">
         <Button buttonText="Add Product" callBackFunction={handleAddProduct} />
         <Button
           buttonText="Delete Product"

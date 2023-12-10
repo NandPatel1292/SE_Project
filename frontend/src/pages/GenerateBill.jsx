@@ -40,36 +40,6 @@ const GenerateBill = () => {
         Brand: "DairyCo",
         Category: "Dairy",
       },
-      {
-        Product: "6543219870",
-        Item: "Bread",
-        Weight: "400g",
-        Rate: "18",
-        Disc: "0",
-        Amount: "18",
-        Brand: "BakeryGood",
-        Category: "Bread",
-      },
-      {
-        Product: "1122334455",
-        Item: "Pasta",
-        Weight: "500g",
-        Rate: "8",
-        Disc: "0",
-        Amount: "8",
-        Brand: "ItalianTaste",
-        Category: "Pasta",
-      },
-      {
-        Product: "4433221100",
-        Item: "Chicken Breast",
-        Weight: "500g",
-        Rate: "12",
-        Disc: "5",
-        Amount: "11.40",
-        Brand: "MeatMaster",
-        Category: "Meat",
-      },
     ]);
   }, []);
   return (
@@ -80,7 +50,7 @@ const GenerateBill = () => {
           <DashboardControls />
         </div>
       </div>
-      <div className="h-2/3 mx-4 mt-4 bg-gray-100">
+      <div className="h-2/3 mx-4 mt-4">
         <Table tableHeaders={tableHeaders} tableBodyDate={tableBodyDate} />
       </div>
     </div>

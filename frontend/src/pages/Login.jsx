@@ -28,9 +28,9 @@ const Login = () => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(loginForm));
+    const res = await dispatch(login(loginForm));
   };
 
   useEffect(() => {

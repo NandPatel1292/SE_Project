@@ -9,7 +9,7 @@ const Button = (props) => {
   };
   return (
     <button
-      class="bg-[#08059B] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2 mt-2"
+      className="bg-[#08059B] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2 mt-2"
       onClick={handleOnclickButton}
     >
       {buttonText ? buttonText : "Button"}

@@ -13,7 +13,7 @@ const ManageFeatures = () => {
       <div className="flex flex-col items-center justify-center w-3/4">
         <div className="flex mb-4 gap-8">
           <Link
-            to={"/page1"}
+            to={"/create-bill"}
             className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl shadow hover:scale-105 transition-transform "
           >
             <img
@@ -55,7 +55,7 @@ const ManageFeatures = () => {
 
         <div className="flex mb-4 gap-8">
           <Link
-            to={"/page1"}
+            to={"/manage-products"}
             className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img

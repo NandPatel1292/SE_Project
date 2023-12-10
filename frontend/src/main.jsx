@@ -20,20 +20,75 @@ import GenerateBill from "./pages/GenerateBill.jsx";
 import ManageFeatures from "./pages/ManageFeatures.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import AddDetails from "./pages/AddDetails.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Page3 from "./pages/Page3.jsx";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="" element={<App />}>
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="add-details" element={<AddDetails />} />
-      <Route path="features" element={<ManageFeatures />} />
-      <Route path="page1" element={<BillProducts />} />
-      <Route path="page2" element={<AddProduct />} />
-      <Route path="page3" element={<GenerateBill />} />
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <GenerateBill />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <SignUp />,
+  },
+  {
+    path: "",
+    element: <PrivateRoute />,
+    children: [
+      {
+        path: "add-details",
+        element: <AddDetails />,
+      },
+      // {
+      //   path: "select-plan",
+      //   element: <SelectPlan />,
+      // },
+      {
+        path: "",
+        element: <App />,
+        children: [
+          {
+            path: "features",
+            element: <ManageFeatures />,
+          },
+          {
+            path: "manage-products",
+            element: <BillProducts />,
+          },
+          {
+            path: "create-bill",
+            element: <GenerateBill />,
+          },
+          {
+            path: "add-product",
+            element: <AddProduct />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="" element={<App />}>
+//       <Route path="signup" element={<SignUp />} />
+//       <Route path="login" element={<Login />} />
+//       <Route path="add-details" element={<AddDetails />} />
+//       <Route path="features" element={<ManageFeatures />} />
+//       <Route path="page1" element={<BillProducts />} />
+//       <Route path="page2" element={<AddProduct />} />
+//       <Route path="page3" element={<GenerateBill />} />
+//     </Route>
+//   )
+// );
+
+// store.dispatch(getUserFromStorage());
 
 axios.defaults.baseURL = "http://localhost:3000";
 

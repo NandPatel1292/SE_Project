@@ -13,8 +13,8 @@ const initialState = {
 export const login = createAsyncThunk("auth/login", async (user) => {
   try {
     const response = await axios.post("/api/auth/login", user);
-    localStorage.setItem("user", JSON.stringify(response.data));
-    return response.data;
+    localStorage.setItem("user", JSON.stringify(response.data.data));
+    return response.data.data;
   } catch (error) {
     return error.response.data.message;
   }
@@ -23,8 +23,8 @@ export const login = createAsyncThunk("auth/login", async (user) => {
 export const register = createAsyncThunk("auth/register", async (user) => {
   try {
     const response = await axios.post("/api/auth/register", user);
-    localStorage.setItem("user", JSON.stringify(response.data));
-    return response.data;
+    localStorage.setItem("user", JSON.stringify(response.data.data));
+    return response.data.data;
   } catch (error) {
     return error.response.data.message;
   }
@@ -34,7 +34,7 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   try {
     const response = await axios.get("/api/auth/logout");
     localStorage.removeItem("user");
-    return response.data;
+    return response.data.data;
   } catch (error) {
     return error.response.data.message;
   }
@@ -47,6 +47,10 @@ export const authSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+    getUserFromStorage: (state) => {
+      localStorage.getItem("user") &&
+        (state.user = JSON.parse(localStorage.getItem("user")));
+    },
   },
   extraReducers(builder) {
     builder
@@ -54,6 +58,8 @@ export const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        // localStorage.setItem("user", JSON.stringify(action.payload));
+
         state.user = action.payload;
         state.isAuthenticated = true;
         state.loading = false;
@@ -91,7 +97,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { clearError } = authSlice.actions;
+export const { clearError, getUserFromStorage } = authSlice.actions;
 
 export const selectUser = (state) => state.auth.user;
 export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;

@@ -9,7 +9,7 @@ const DashboardButtons = (props) => {
   };
   return (
     <button
-      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold  p-8 rounded-xl "
+      className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold  p-8 rounded-xl "
       onClick={handleOnclickButton}
     >
       {buttonText ? buttonText : "Button"}

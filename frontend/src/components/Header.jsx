@@ -16,7 +16,7 @@ const Header = () => {
     <header className="shadow sticky z-50 top-0">
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link to="/" className="flex items-center">
+          <Link to="/features" className="flex items-center">
             <div className="flex flex-row">
               <div className="w-min text-blue-800 text-4xl font-bold font-['Inter']">
                 BILL
@@ -26,6 +26,7 @@ const Header = () => {
               </div>
             </div>
           </Link>
+          <div className="text-2xl font-bold">Hello... {getUser.user.name}</div>
           <div className="flex items-center lg:order-2">
             {getUser ? (
               <Link
@@ -69,6 +70,7 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/about"

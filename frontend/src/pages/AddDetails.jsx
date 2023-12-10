@@ -45,22 +45,26 @@ const AddDetails = () => {
     setSelectedPlan(plan);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       ...details,
       isOnTrial,
       isOnPremium,
     };
-    console.log(formData);
-    dispatch(updateUserDetails(formData));
-  };
+    // console.log(formData);
+    const res = await dispatch(updateUserDetails(formData));
 
-  useEffect(() => {
-    if (User && error === null) {
+    if (res.payload) {
       navigate("/features");
     }
-  }, [User, navigate, dispatch]);
+  };
+
+  // useEffect(() => {
+  //   if (User && error === null) {
+  //     navigate("/");
+  //   }
+  // }, [User, navigate, dispatch]);
 
   return (
     <>
