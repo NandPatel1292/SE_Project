@@ -14,7 +14,7 @@ module.exports = {
             const { email, password, name } = req.body;
 
             if (!email || !password || !name) {
-                errorHandeler("Please fill all the fields", 400);
+                errorHandeler("Please fill all the required fields", 400);
             }
 
             const { token, user } = await registerCall(name, email, password);
