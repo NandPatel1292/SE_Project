@@ -4,7 +4,7 @@ import {
     getallbillcall,
     deletebillcall,
     // addbillcall,
-    // updatebillcall
+    updatebillcall
 } from './billApi'
 
 export const getAllBillsAsyncThunk = createAsyncThunk(
@@ -59,7 +59,6 @@ export const updateBillAsyncThunk = createAsyncThunk(
             return rejectWithValue(error);
         }
     }
-
 )
 
 const initialState = {

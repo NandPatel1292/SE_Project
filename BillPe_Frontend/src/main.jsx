@@ -21,53 +21,11 @@ import BillTemplate from "./pages/billTemplate/BillTemplate.jsx";
 import ManageBills from "./pages/manageBills/ManageBills.jsx";
 import ViewAndEditBill from "./pages/manageBills/ViewAndEditBill.jsx";
 import AddBill from "./pages/manageBills/AddBill.jsx";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
+import SalesReport from "./pages/report/Report.jsx";
 
 import { store } from "./app/store.js";
 import { getUserFromStorage } from "./features/user/userSlice.js";
-
-// Router creation
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <SignUp />,
-//       },
-//       {
-//         path: "login",
-//         element: <Login />,
-//       },
-//       {
-//         path: "signup",
-//         element: <SignUp />,
-//       },
-//       // {
-//       //   path: "",
-//       //   element: <Landing />,
-//       // },
-//       {
-//         path: "",
-//         element: <PrivateRoute />,
-//         children: [
-//           {
-//             path: "features",
-//             element: <FeatureScreen />,
-//           },
-//           {
-//             path: "add-details",
-//             element: <AddDetails />,
-//           },
-//           {
-//             path: "select-plan",
-//             element: <SelectPlan />,
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
 
 const router = createBrowserRouter([
   {
@@ -129,6 +87,14 @@ const router = createBrowserRouter([
           {
             path: "generate-bill",
             element: <AddBill />,
+          },
+          {
+            path: "dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "sales-report",
+            element: <SalesReport />,
           },
         ],
       },
