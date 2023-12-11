@@ -2,8 +2,23 @@ import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
 import HomePageWidget from "../components/HomePageWidget";
 import DashboardControls from "../components/DashboardControls";
+import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getBills,
+  selectBills,
+  selectError,
+  selectLoading,
+} from "../features/bill/billSclice";
 
 const GenerateBill = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const bill = useSelector(selectBills);
+  const error = useSelector(selectError);
+  const loading = useSelector(selectLoading);
+
   const [tableBodyDate, setTableBodyDate] = useState([]);
   const [tableHeaders, setTableHeaders] = useState([
     "No.",
@@ -18,30 +33,9 @@ const GenerateBill = () => {
   ]);
 
   useEffect(() => {
-    //static data can be removed
-    setTableBodyDate([
-      {
-        Product: "9852656898",
-        Item: "Amul Butter",
-        Weight: "50g",
-        Rate: "52",
-        Disc: "0",
-        Amount: "52",
-        Brand: "Amul",
-        Category: "Butter",
-      },
-      {
-        Product: "7894561230",
-        Item: "Milk",
-        Weight: "1L",
-        Rate: "25",
-        Disc: "5",
-        Amount: "23.75",
-        Brand: "DairyCo",
-        Category: "Dairy",
-      },
-    ]);
-  }, []);
+    dispatch(getBills());
+  }, [dispatch]);
+
   return (
     <div className="flex flex-col">
       <div>
@@ -51,7 +45,7 @@ const GenerateBill = () => {
         </div>
       </div>
       <div className="h-2/3 mx-4 mt-4">
-        <Table tableHeaders={tableHeaders} tableBodyDate={tableBodyDate} />
+        <Table tableHeaders={tableHeaders} tableBodyDate={bill.items} />
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ import SignUp from "./pages/SignUp.jsx";
 import AddDetails from "./pages/AddDetails.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Page3 from "./pages/Page3.jsx";
+import BillTemplate from "./components/BillTemplate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
           {
             path: "add-product",
             element: <AddProduct />,
+          },
+          {
+            path: "bill-templates",
+            element: <BillTemplate />,
           },
         ],
       },
