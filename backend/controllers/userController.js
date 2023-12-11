@@ -1,6 +1,9 @@
 // file imports
 const { errorHandeler } = require('../utils/errorHandler');
 
+// function imports
+const stripePayment = require('../middleware/stripePayment');
+
 const {
     deleteUserCall,
     changePasswordCall,
@@ -160,13 +163,18 @@ module.exports = {
 
     // create checkout session
     // link       /api/user/create-checkout-session
-    // createCheckoutSession: async (req, res, next) => {
-    //     try {
+    createCheckoutSession: async (req, res, next) => {
+        const storeItems = new Map([
+            [1, { priceInCents: 3000, name: "One Month Subscription" }],
+            [2, { priceInCents: 32400, name: "One Year Subscription" }],
+        ])
 
+        try {
+            const session = await stripePayment(req.body.items);
 
-
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
+            return res.json({ url: session.url })
+        } catch (error) {
+            next(error);
+        }
+    },
 }

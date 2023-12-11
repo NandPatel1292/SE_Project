@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 // file imports
 const User = require('../models/userModel');
 const { errorHandeler } = require('../utils/errorHandler.js');
-const stripePayment = require('../middleware/stripePayment');
+const stripePayment = require('../middleware/stripePayment.js');
 
 module.exports = {
 
@@ -134,12 +134,6 @@ module.exports = {
                     errorHandeler("You are already on premium", 400);
                 }
 
-
-
-                const session = await stripePayment([{ id: 1, quantity: 1 }])
-
-                console.log(session);
-
                 user.isOnTrial = true;
                 user.isTrialUsed = true;
                 user.startedAt = Date.now();
@@ -154,13 +148,9 @@ module.exports = {
                     errorHandeler("You are already on premium", 400);
                 }
 
-                const session = await stripePayment([{ id: 1, quantity: 1 }])
-
-                console.log(session);
-
                 user.isOnPremium = true;
                 user.startedAt = Date.now();
-                user.expiresAt = Date.now() + period * 360 * 24 * 60 * 60 * 1000; // 360 days premium period available and accessed
+                user.expiresAt = Date.now() + 360 * 24 * 60 * 60 * 1000; // 360 days premium period available and accessed
 
                 await user.save();
 

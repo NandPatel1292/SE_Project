@@ -1,5 +1,5 @@
 require("dotenv").config()
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 const stripePayment = async (items) => {
     const storeItems = new Map([
@@ -7,8 +7,9 @@ const stripePayment = async (items) => {
         [2, { priceInCents: 32400, name: "One Year Subscription" }],
     ])
 
+    console.log(process.env.STRIPE_PRIVATE_KEY);
+
     try {
-        console.log(stripe);
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             mode: "payment",
@@ -28,10 +29,9 @@ const stripePayment = async (items) => {
             success_url: `http://localhost:5173/features`,
             cancel_url: `http://localhost:5173/select-plan`,
         })
-        return session
     } catch (error) {
         throw error;
     }
 }
 
-module.exports = stripePayment
+module.exports = stripePayment;

@@ -9,6 +9,7 @@ const {
     accessBillPe,
     getUserDetails,
     updateOrganisationDetails,
+    createCheckoutSession,
 } = require("../controllers/userController");
 const verifyToken = require("../middleware/tokenAuth");
 
@@ -50,6 +51,6 @@ router.route('/update-organisation-details').patch(verifyToken, updateOrganisati
 // create checkout session
 // link       /api/user/create-checkout-session
 // access     private
-// router.route('/create-checkout-session').post(verifyToken, premiumAccess);
+router.route('/create-checkout-session').post(verifyToken, createCheckoutSession);
 
 module.exports = router;
