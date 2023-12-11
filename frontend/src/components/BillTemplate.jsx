@@ -1,6 +1,6 @@
 import React from "react";
 
-const BillTemplate = () => {
+const BillTemplate = ({ _id, bill, user }) => {
   return (
     <>
       <div className="bg-gray-50 ">
@@ -21,12 +21,15 @@ const BillTemplate = () => {
                   <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 ">
                     Invoice #
                   </h2>
-                  <span className="mt-1 block text-gray-500">3682303</span>
+                  <span className="mt-1 block text-gray-500">{_id}</span>
 
                   <address className="mt-4 not-italic text-gray-800 ">
                     45 Roker Terrace Latheronwheel KW5 8NW, London United
                     Kingdom
                   </address>
+                  {/* <address className="mt-4 not-italic text-gray-800 ">
+                    {user.address}
+                  </address> */}
                 </div>
               </div>
 
@@ -38,9 +41,15 @@ const BillTemplate = () => {
                   <h3 className="text-lg font-semibold text-gray-800 ">
                     Sara Williams
                   </h3>
+                  {/* <h3 className="text-lg font-semibold text-gray-800 ">
+                    {bill.customerName}
+                  </h3> */}
                   <address className="mt-2 not-italic text-gray-500">
                     280 Suzanne Throughway, Breannabury, OR 45801, United States
                   </address>
+                  {/* <address className="mt-2 not-italic text-gray-500">
+                    {bill.customerMobile}
+                  </address> */}
                 </div>
 
                 <div className="sm:text-end space-y-2">
@@ -50,12 +59,18 @@ const BillTemplate = () => {
                         Invoice date:
                       </dt>
                       <dd className="col-span-2 text-gray-500">03/10/2018</dd>
+                      {/* <dd className="col-span-2 text-gray-500">
+                        {bill.createdAt}
+                      </dd> */}
                     </dl>
                     <dl className="grid sm:grid-cols-5 gap-x-3">
                       <dt className="col-span-3 font-semibold text-gray-800 ">
                         Due date:
                       </dt>
                       <dd className="col-span-2 text-gray-500">03/11/2018</dd>
+                      {/* <dd className="col-span-2 text-gray-500">
+                        {bill.payment.paymentDate}
+                      </dd> */}
                     </dl>
                   </div>
                 </div>
@@ -88,24 +103,30 @@ const BillTemplate = () => {
                       <p className="font-medium text-gray-800 ">
                         Design UX and UI
                       </p>
+                      {/* <p className="font-medium text-gray-800 ">
+                        {bill.item.name}
+                      </p> */}
                     </div>
                     <div>
                       <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
                         Qty
                       </h5>
                       <p className="text-gray-800 ">1</p>
+                      {/* <p className="text-gray-800 ">{bill.item.qnt}</p> */}
                     </div>
                     <div>
                       <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
                         Rate
                       </h5>
                       <p className="text-gray-800 ">5</p>
+                      {/* <p className="text-gray-800 ">{bill.item.price}</p> */}
                     </div>
                     <div>
                       <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
                         Amount
                       </h5>
                       <p className="sm:text-end text-gray-800 ">$500</p>
+                      {/* <p className="sm:text-end text-gray-800 ">{bill.item.price}</p> */}
                     </div>
                   </div>
 
@@ -139,33 +160,6 @@ const BillTemplate = () => {
                   </div>
 
                   <div className="sm:hidden border-b border-gray-200 "></div>
-
-                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                    <div className="col-span-full sm:col-span-2">
-                      <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
-                        Item
-                      </h5>
-                      <p className="font-medium text-gray-800 ">SEO</p>
-                    </div>
-                    <div>
-                      <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
-                        Qty
-                      </h5>
-                      <p className="text-gray-800 ">1</p>
-                    </div>
-                    <div>
-                      <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
-                        Rate
-                      </h5>
-                      <p className="text-gray-800 ">6</p>
-                    </div>
-                    <div>
-                      <h5 className="sm:hidden text-xs font-medium text-gray-500 uppercase">
-                        Amount
-                      </h5>
-                      <p className="sm:text-end text-gray-800 ">$2000</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -177,6 +171,7 @@ const BillTemplate = () => {
                         Subtotal:
                       </dt>
                       <dd className="col-span-2 text-gray-500">$2750.00</dd>
+                      {/* <dd className="col-span-2 text-gray-500">{bill.totalAmount}</dd> */}
                     </dl>
 
                     <dl className="grid sm:grid-cols-5 gap-x-3">
@@ -184,6 +179,7 @@ const BillTemplate = () => {
                         Total:
                       </dt>
                       <dd className="col-span-2 text-gray-500">$2750.00</dd>
+                      {/* <dd className="col-span-2 text-gray-500">{bill.price}</dd> */}
                     </dl>
 
                     <dl className="grid sm:grid-cols-5 gap-x-3">
@@ -191,6 +187,7 @@ const BillTemplate = () => {
                         Tax:
                       </dt>
                       <dd className="col-span-2 text-gray-500">$39.00</dd>
+                      {/* <dd className="col-span-2 text-gray-500">{bill.gst}</dd> */}
                     </dl>
 
                     <dl className="grid sm:grid-cols-5 gap-x-3">
@@ -198,6 +195,7 @@ const BillTemplate = () => {
                         Amount paid:
                       </dt>
                       <dd className="col-span-2 text-gray-500">$2789.00</dd>
+                      {/* <dd className="col-span-2 text-gray-500">{}</dd> */}
                     </dl>
 
                     <dl className="grid sm:grid-cols-5 gap-x-3">
