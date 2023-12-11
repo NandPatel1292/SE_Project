@@ -7,8 +7,6 @@ const stripePayment = async (items) => {
         [2, { priceInCents: 32400, name: "One Year Subscription" }],
     ])
 
-    console.log(process.env.STRIPE_PRIVATE_KEY);
-
     try {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
@@ -29,6 +27,8 @@ const stripePayment = async (items) => {
             success_url: `http://localhost:5173/features`,
             cancel_url: `http://localhost:5173/select-plan`,
         })
+
+        return session;
     } catch (error) {
         throw error;
     }
