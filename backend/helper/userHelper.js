@@ -134,7 +134,9 @@ module.exports = {
                     errorHandeler("You are already on premium", 400);
                 }
 
-                const session = await stripePayment("One Month Subscription", 3000)
+
+
+                const session = await stripePayment([{ id: 1, quantity: 1 }])
 
                 console.log(session);
 
@@ -152,7 +154,7 @@ module.exports = {
                     errorHandeler("You are already on premium", 400);
                 }
 
-                const session = await stripePayment("One Year Subscription", 3240)
+                const session = await stripePayment([{ id: 1, quantity: 1 }])
 
                 console.log(session);
 
