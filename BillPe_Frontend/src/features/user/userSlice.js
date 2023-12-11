@@ -5,7 +5,8 @@ import {
     signupcall,
     adddetailscall,
     subscribeplancall,
-    logoutcall
+    logoutcall,
+    updateusercall
 } from './userApi'
 
 export const loginAsyncThunk = createAsyncThunk(
@@ -87,18 +88,18 @@ export const logOutUserAsyncThunk = createAsyncThunk(
 //     }
 // )
 
-// export const updateUserAsyncThunk = createAsyncThunk(
-//     'user/update',
-//     async (data, { rejectWithValue }) => {
-//         try {
-//             const res = await updateUserCall(data);
-//             const resData = res.data;
-//             return resData.data;
-//         } catch (error) {
-//             return rejectWithValue(error);
-//         }
-//     }
-// )
+export const updateUserAsyncThunk = createAsyncThunk(
+    'user/update',
+    async (data, { rejectWithValue }) => {
+        try {
+            const res = await updateusercall(data);
+            const resData = res.data;
+            return resData.data;
+        } catch (error) {
+            return rejectWithValue(error);
+        }
+    }
+)
 
 // export const deleteAccountAsyncThunk = createAsyncThunk(
 //     'user/delete',
@@ -142,7 +143,7 @@ export const userSlice = createSlice({
             })
             .addCase(loginAsyncThunk.fulfilled, (state, action) => {
                 // local storage
-                localStorage.setItem('user', JSON.stringify(action.payload));
+                localStorage.setItem('user', JSON.stringify(action.payload.user));
 
                 state.loading = false;
                 state.currentUser = action.payload;
@@ -159,7 +160,7 @@ export const userSlice = createSlice({
             })
             .addCase(signupAsyncThunk.fulfilled, (state, action) => {
                 // local storage
-                localStorage.setItem('user', JSON.stringify(action.payload));
+                localStorage.setItem('user', JSON.stringify(action.payload.user));
 
                 state.loading = false;
                 state.currentUser = action.payload;
@@ -204,7 +205,6 @@ export const userSlice = createSlice({
                 state.error = action.payload;
             })
 
-
             // sign out
             .addCase(logOutUserAsyncThunk.pending, (state) => {
                 state.loading = true;
@@ -220,6 +220,25 @@ export const userSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+
+
+            // update user
+            .addCase(updateUserAsyncThunk.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(updateUserAsyncThunk.fulfilled, (state, action) => {
+                // local storage
+                localStorage.setItem('user', JSON.stringify(action.payload));
+
+                state.loading = false;
+                state.currentUser = action.payload;
+                state.error = null;
+            })
+            .addCase(updateUserAsyncThunk.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+
 
         // // signup with google
         // .addCase(signupWithGoogleAsyncThunk.pending, (state) => {
@@ -254,22 +273,6 @@ export const userSlice = createSlice({
         //     state.error = action.payload;
         // })
 
-        // // update user
-        // .addCase(updateUserAsyncThunk.pending, (state) => {
-        //     state.loading = true;
-        // })
-        // .addCase(updateUserAsyncThunk.fulfilled, (state, action) => {
-        //     // local storage
-        //     localStorage.setItem('user', JSON.stringify(action.payload));
-
-        //     state.loading = false;
-        //     state.currentUser = action.payload;
-        //     state.error = null;
-        // })
-        // .addCase(updateUserAsyncThunk.rejected, (state, action) => {
-        //     state.loading = false;
-        //     state.error = action.payload;
-        // })
 
         // 
     },

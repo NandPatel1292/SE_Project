@@ -23,6 +23,7 @@ import ViewAndEditBill from "./pages/manageBills/ViewAndEditBill.jsx";
 import AddBill from "./pages/manageBills/AddBill.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import SalesReport from "./pages/report/Report.jsx";
+import HelpDesk from "./pages/helpDesk/HelpDesk.jsx";
 
 import { store } from "./app/store.js";
 import { getUserFromStorage } from "./features/user/userSlice.js";
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
           {
             path: "sales-report",
             element: <SalesReport />,
+          },
+          {
+            path: "help-desk",
+            element: <HelpDesk />,
           },
         ],
       },

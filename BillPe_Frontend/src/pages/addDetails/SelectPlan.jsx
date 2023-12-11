@@ -17,8 +17,9 @@ const SelectPlan = () => {
   useEffect(() => {
     if (selectedPlan) {
       handelPayment();
+      dispatch(subscribePlanAsyncThunk(selectedPlan));
     }
-  }, [selectedPlan]);
+  }, [selectedPlan, dispatch]);
 
   const handelPayment = async () => {
     const body =
@@ -42,18 +43,6 @@ const SelectPlan = () => {
       setSelectedPlan("trial");
     } else {
       setSelectedPlan("premium");
-    }
-  };
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-
-    if (!selectedPlan) return;
-
-    const res = await dispatch(subscribePlanAsyncThunk(selectedPlan));
-
-    if (res.meta.requestStatus === "fulfilled") {
-      navigate("/features");
     }
   };
 
@@ -87,16 +76,6 @@ const SelectPlan = () => {
                     isSelected={selectedPlan === "premium"}
                   />
                 </div>
-              </div>
-
-              <div className="flex justify-between">
-                <button
-                  type="button"
-                  className="flex w-2/6 mt-10 justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  onClick={handleClick}
-                >
-                  Ready To Start...
-                </button>
               </div>
             </div>
           </div>

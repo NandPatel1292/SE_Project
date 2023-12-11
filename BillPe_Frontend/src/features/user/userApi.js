@@ -20,6 +20,10 @@ export const logoutcall = () => {
     return axios.get(`/api/auth/logout`);
 }
 
+export const updateusercall = (data) => {
+    return axios.patch(`/api/user/change-user-details`, data);
+}
+
 // export const signupWithGoogleCall = (data) => {
 //     return axios.post('/api/v1/user/google', data)
 // }
@@ -28,6 +32,3 @@ export const logoutcall = () => {
 //     return axios.delete(`/api/v1/user/delete/${data}`);
 // }
 
-// export const updateUserCall = (data) => {
-//     return axios.patch(`/api/v1/user/update/${data._id}`, data);
-// }
