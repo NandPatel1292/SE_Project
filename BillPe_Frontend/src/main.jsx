@@ -17,6 +17,7 @@ import FeatureScreen from "./pages/featureScreen/FeatureScreen.jsx";
 import ManageProducts from "./pages/manageProducts/ManageProducts.jsx";
 import AddProduct from "./pages/manageProducts/AddProduct.jsx";
 import ViewAndEditProduct from "./pages/manageProducts/ViewAndEditProduct.jsx";
+import BillTemplate from "./pages/billTemplate/BillTemplate.jsx";
 
 import { store } from "./app/store.js";
 import { getUserFromStorage } from "./features/user/userSlice.js";
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
           {
             path: "product/:id",
             element: <ViewAndEditProduct />,
+          },
+          {
+            path: "bill-template",
+            element: <BillTemplate />,
           },
         ],
       },
