@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BillpayLogo from "../../components/BillpayLogo";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { subscribePlanAsyncThunk } from "../../features/user/userSlice";
 import Card from "../../components/Card";
+import axios from "axios";
 
 const SelectPlan = () => {
   const navigate = useNavigate();
@@ -12,6 +13,29 @@ const SelectPlan = () => {
   const { loading, error } = useSelector((state) => state.user);
 
   const [selectedPlan, setSelectedPlan] = useState(null);
+
+  useEffect(() => {
+    if (selectedPlan) {
+      handelPayment();
+    }
+  }, [selectedPlan]);
+
+  const handelPayment = async () => {
+    const body =
+      selectedPlan === "trial"
+        ? { items: [{ id: 1, quantity: 1 }] }
+        : { items: [{ id: 2, quantity: 1 }] };
+
+    axios
+      .post("/api/user/create-checkout-session", body)
+      .then((res) => {
+        console.log(res.data);
+        window.location = res.data.url;
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
+  };
 
   const handlePlanSelection = (plan) => {
     if (plan === "7 Days Of Free Trial") {
