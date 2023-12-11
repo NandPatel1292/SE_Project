@@ -1,8 +1,9 @@
 require("dotenv").config()
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const stripePayment = async (name, priceInCents) => {
     try {
+        console.log(stripe);
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             mode: "payment",
