@@ -1,5 +1,7 @@
 // file imports
 const { errorHandeler } = require('../utils/errorHandler');
+require("dotenv").config()
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 const {
     deleteUserCall,
@@ -160,13 +162,37 @@ module.exports = {
 
     // create checkout session
     // link       /api/user/create-checkout-session
-    // createCheckoutSession: async (req, res, next) => {
-    //     try {
+    createCheckoutSession: async (req, res, next) => {
 
+        const storeItems = new Map([
+            [1, { priceInCents: 3000, name: "One Month Subscription" }],
+            [2, { priceInCents: 32400, name: "One Year Subscription" }],
+          ])
 
+        try {
+            const session = await stripe.checkout.sessions.create({
+              payment_method_types: ["card"],
+              mode: "payment",
+              line_items: req.body.items.map(item => {
+                const storeItem = storeItems.get(item.id)
+                return {
+                  price_data: {
+                    currency: "inr",
+                    product_data: {
+                      name: storeItem.name,
+                    },
+                    unit_amount: storeItem.priceInCents,
+                  },
+                  quantity: item.quantity,
+                }
+              }),
+              success_url: `http://localhost:5173/features`,
+              cancel_url: `http://localhost:5173/select-plan`,
+            })
+            res.json({ url: session.url })
+          } catch (e) {
+            next(e);
+          }
 
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
+    },
 }
