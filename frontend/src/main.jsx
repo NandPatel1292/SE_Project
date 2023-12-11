@@ -26,6 +26,7 @@ import BillTemplate from "./components/BillTemplate.jsx";
 import Report from "./pages/Report.jsx";
 import SingleBill from "./pages/SingleBill.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Help from "./pages/Help.jsx";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
           {
             path: "dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "help",
+            element: <Help />,
           },
         ],
       },

@@ -8,9 +8,12 @@ const Header = () => {
   const navigate = useNavigate();
 
   const getUser = useSelector(selectUser);
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/login");
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout()).then(() => {
+      navigate("/login");
+    });
   };
   return (
     <header className="shadow sticky z-50 top-0">

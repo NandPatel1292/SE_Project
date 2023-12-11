@@ -11,8 +11,8 @@ const Dashboard = () => {
   const user = useSelector(selectUser);
   return (
     <>
-      <div className="flex flex-row h-screen">
-        <div className="basis-1/2 pl-10 pt-10">
+      <div className="flex flex-row h-screen p-10">
+        <div className="basis-1/2 p-10">
           <img src={dashboard} alt="profile" className="w-[25rem] h-[25rem]" />
           <div className="flex flex-col  justify-center text-center gap-3">
             <h1 className="text-2xl font-bold w-[25rem]">{user.user.name}</h1>
