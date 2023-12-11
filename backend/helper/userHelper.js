@@ -58,7 +58,7 @@ module.exports = {
     },
 
     // chnageUserDetailsCall
-    changeUserDetailsCall: async (userId, name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber) => {
+    changeUserDetailsCall: async (userId, name, email, gstNumber, orginationName, address, contactNumber) => {
         try {
             const user = await User.findById(userId);
 
@@ -79,7 +79,6 @@ module.exports = {
             user.gstNumber = gstNumber || user.gstNumber;
             user.orginationName = orginationName || user.orginationName;
             user.address = address || user.address;
-            user.numberOfCounters = numberOfCounters || user.numberOfCounters;
             user.contactNumber = contactNumber || user.contactNumber;
 
             await user.save();
@@ -91,7 +90,7 @@ module.exports = {
     },
 
     // update info using more details
-    updateOrganisationDetailsCall: async (userId, gstNumber, orginationName, address, numberOfCounters, contactNumber) => {
+    updateOrganisationDetailsCall: async (userId, gstNumber, orginationName, address, contactNumber) => {
         try {
             const user = await User.findById(userId);
 
@@ -102,7 +101,6 @@ module.exports = {
             user.gstNumber = gstNumber || user.gstNumber;
             user.orginationName = orginationName || user.orginationName;
             user.address = address || user.address;
-            user.numberOfCounters = numberOfCounters || user.numberOfCounters;
             user.contactNumber = contactNumber || user.contactNumber;
 
             await user.save();

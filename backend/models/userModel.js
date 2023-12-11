@@ -64,10 +64,6 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: null,
         },
-        numberOfCounters: {
-            type: Number,
-            default: null,
-        },
         contactNumber: {
             type: Number,
             default: null,

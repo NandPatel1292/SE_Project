@@ -76,9 +76,9 @@ module.exports = {
 
             const { userId } = req.user;
 
-            const { name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber } = req.body;
+            const { name, email, gstNumber, orginationName, address, contactNumber } = req.body;
 
-            const user = await changeUserDetailsCall(userId, name, email, gstNumber, orginationName, address, numberOfCounters, contactNumber);
+            const user = await changeUserDetailsCall(userId, name, email, gstNumber, orginationName, address, contactNumber);
 
             return res.status(200).json({
                 success: true,
@@ -139,13 +139,13 @@ module.exports = {
 
             const { userId } = req.user;
 
-            const { gstNumber, orginationName, address, numberOfCounters, contactNumber } = req.body;
+            const { gstNumber, orginationName, address, contactNumber } = req.body;
 
-            if (!gstNumber || !orginationName || !address || !numberOfCounters || !contactNumber) {
+            if (!gstNumber || !orginationName || !address || !contactNumber) {
                 errorHandeler("Please fill all the fields", 400);
             }
 
-            const user = await updateOrganisationDetailsCall(userId, gstNumber, orginationName, address, numberOfCounters, contactNumber);
+            const user = await updateOrganisationDetailsCall(userId, gstNumber, orginationName, address, contactNumber);
 
             return res.status(200).json({
                 success: true,
