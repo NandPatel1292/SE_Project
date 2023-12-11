@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { deleteProductAsyncThunk } from "../features/product/productSlice";
+import { deleteBillAsyncThunk } from "../features/bill/billSlice";
 
 const BillTable = ({ tableHeaders, tableData }) => {
   const dispatch = useDispatch();
@@ -42,11 +42,11 @@ const BillTable = ({ tableHeaders, tableData }) => {
   // delete bills
   const handelDeleteBills = async (e, id) => {
     e.preventDefault();
-    //   const res = await dispatch(deleteProductAsyncThunk(id));
+    const res = await dispatch(deleteBillAsyncThunk(id));
 
-    //   if (res.meta.requestStatus === "fulfilled") {
-    //     console.log("deleted successfully");
-    //   }
+    if (res.meta.requestStatus === "fulfilled") {
+      console.log("deleted successfully");
+    }
   };
 
   const formatDate = (date) => {
@@ -116,7 +116,12 @@ const BillTable = ({ tableHeaders, tableData }) => {
                     </td>
                     <td className="px-6 py-4">
                       Amt: {item && item.totalAmount ? item.totalAmount : ""}
-                      <Link>View Details</Link>
+                      <Link
+                        to={`/bill/${item._id}`}
+                        className="ml-5 text-blue-500"
+                      >
+                        View Details
+                      </Link>
                     </td>
 
                     {/* delete option */}

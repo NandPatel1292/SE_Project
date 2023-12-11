@@ -1,17 +1,17 @@
 import axios from "axios"
 
-export const getall = () => {
-    return axios.get('/api/product/get')
+export const getallbillcall = () => {
+    return axios.get('/api/bill/get')
 }
 
-export const deleteproductcall = (id) => {
-    return axios.delete(`/api/product/delete/${id}`)
+export const deletebillcall = (id) => {
+    return axios.delete(`/api/bill/delete/${id}`)
 }
 
-export const addproductcall = (product) => {
-    return axios.post('/api/product/add', product)
+export const addbillcall = (bill) => {
+    return axios.post('/api/bill/add', bill)
 }
 
-export const updateproductcall = (id, product) => {
-    return axios.patch(`/api/product/update/${id}`, product)
+export const updatebillcall = (id, bill) => {
+    return axios.patch(`/api/bill/update/${id}`, bill)
 }

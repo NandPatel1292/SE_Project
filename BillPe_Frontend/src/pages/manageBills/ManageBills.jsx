@@ -7,16 +7,16 @@ import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getAllProductsAsyncThunk } from "../../features/product/productSlice";
+import { getAllBillsAsyncThunk } from "../../features/bill/billSlice";
 
 const ManageBills = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error, bills } = useSelector((state) => state.product);
+  const { loading, error, bills } = useSelector((state) => state.bill);
 
   useEffect(() => {
-    dispatch(getAllProductsAsyncThunk());
+    dispatch(getAllBillsAsyncThunk());
   }, [dispatch]);
 
   const tableHeaders = [
@@ -31,15 +31,15 @@ const ManageBills = () => {
   return (
     <div>
       <SearchBox />
-      <div className="flex flex-row ml-6 pb-4 gap-5">
+      {/* <div className="flex flex-row ml-6 pb-4 gap-5">
         <Link
           to="/add-product"
           className="text-white bg-[#5228f5ff] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
         >
-          Add Product
+          Add Bills
         </Link>
-      </div>
-      <Table tableHeaders={tableHeaders} tableData={products} />
+      </div> */}
+      <Table tableHeaders={tableHeaders} tableData={bills} />
     </div>
   );
 };

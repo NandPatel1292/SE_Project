@@ -18,6 +18,9 @@ import ManageProducts from "./pages/manageProducts/ManageProducts.jsx";
 import AddProduct from "./pages/manageProducts/AddProduct.jsx";
 import ViewAndEditProduct from "./pages/manageProducts/ViewAndEditProduct.jsx";
 import BillTemplate from "./pages/billTemplate/BillTemplate.jsx";
+import ManageBills from "./pages/manageBills/ManageBills.jsx";
+import ViewAndEditBill from "./pages/manageBills/ViewAndEditBill.jsx";
+import AddBill from "./pages/manageBills/AddBill.jsx";
 
 import { store } from "./app/store.js";
 import { getUserFromStorage } from "./features/user/userSlice.js";
@@ -114,6 +117,18 @@ const router = createBrowserRouter([
           {
             path: "bill-template",
             element: <BillTemplate />,
+          },
+          {
+            path: "manage-bills",
+            element: <ManageBills />,
+          },
+          {
+            path: "bill/:id",
+            element: <ViewAndEditBill />,
+          },
+          {
+            path: "generate-bill",
+            element: <AddBill />,
           },
         ],
       },
