@@ -23,6 +23,8 @@ import AddDetails from "./pages/AddDetails.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Page3 from "./pages/Page3.jsx";
 import BillTemplate from "./components/BillTemplate.jsx";
+import Report from "./pages/Report.jsx";
+import SingleBill from "./pages/SingleBill.jsx";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,14 @@ const router = createBrowserRouter([
           {
             path: "bill-templates",
             element: <BillTemplate />,
+          },
+          {
+            path: "report",
+            element: <Report />,
+          },
+          {
+            path: "manage-bill",
+            element: <SingleBill />,
           },
         ],
       },

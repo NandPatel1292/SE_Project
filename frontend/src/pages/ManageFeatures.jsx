@@ -29,7 +29,7 @@ const ManageFeatures = () => {
           </Link>
 
           <Link
-            to={"/page1"}
+            to={"/report"}
             className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={reports} alt="" />
@@ -41,7 +41,7 @@ const ManageFeatures = () => {
           </Link>
 
           <Link
-            to={"/page1"}
+            to={"/manage-bill"}
             className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={manageBill} alt="" />
