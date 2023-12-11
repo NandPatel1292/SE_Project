@@ -14,6 +14,9 @@ import SignUp from "./pages/signup/Signup.jsx";
 import AddDetails from "./pages/addDetails/AddDetails.jsx";
 import SelectPlan from "./pages/addDetails/SelectPlan.jsx";
 import FeatureScreen from "./pages/featureScreen/FeatureScreen.jsx";
+import ManageProducts from "./pages/manageProducts/ManageProducts.jsx";
+import AddProduct from "./pages/manageProducts/AddProduct.jsx";
+import ViewAndEditProduct from "./pages/manageProducts/ViewAndEditProduct.jsx";
 
 import { store } from "./app/store.js";
 import { getUserFromStorage } from "./features/user/userSlice.js";
@@ -95,6 +98,18 @@ const router = createBrowserRouter([
             path: "features",
             element: <FeatureScreen />,
           },
+          {
+            path: "manage-products",
+            element: <ManageProducts />,
+          },
+          {
+            path: "add-product",
+            element: <AddProduct />,
+          },
+          {
+            path: "product/:id",
+            element: <ViewAndEditProduct />,
+          },
         ],
       },
     ],
@@ -104,9 +119,9 @@ const router = createBrowserRouter([
 store.dispatch(getUserFromStorage());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  // </React.StrictMode>
 );

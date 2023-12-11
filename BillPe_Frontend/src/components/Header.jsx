@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <div className="flex flex-row">
-              <div className="w-min text-blue-800 text-4xl font-bold font-['Inter']">
+              <div className="w-min text-[#5228f5ff] text-4xl font-bold font-['Inter']">
                 BILL
               </div>
               <div className="w-min h-7 text-red-700 text-opacity-80 text-4xl font-bold font-['Inter']">
@@ -32,7 +32,7 @@ const Header = () => {
             <Link
               to="/"
               onClick={handleLogout}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+              className="text-white bg-[#5228f5ff] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
             >
               Log out
             </Link>

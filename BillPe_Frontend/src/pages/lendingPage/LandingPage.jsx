@@ -3,9 +3,13 @@ import React from "react";
 import FeatureCard from "./FeatureCard";
 import Question from "./Question";
 import "./LandingPage.css";
+
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Landing = (props) => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <div className="home-container">
       <div className="home-header">
@@ -19,14 +23,25 @@ const Landing = (props) => {
               <span className="home-nav4 cursor-pointer">Team</span>
               <span className="home-nav5 cursor-pointer">Blog</span>
             </nav>
-            <div className="home-buttons">
-              <Link to="/login" className="home-login button">
-                Login
-              </Link>
-              <Link to="/signup" className="home-register button">
-                Register
-              </Link>
-            </div>
+            {currentUser ? (
+              <div className="home-buttons">
+                <Link to="/dashboard" className="home-login button">
+                  Dashboard
+                </Link>
+                <Link to="/features" className="home-register button">
+                  Features
+                </Link>
+              </div>
+            ) : (
+              <div className="home-buttons">
+                <Link to="/login" className="home-login button">
+                  Login
+                </Link>
+                <Link to="/signup" className="home-register button">
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
           <div data-thq="thq-burger-menu" className="home-burger-menu">
             <svg viewBox="0 0 1024 1024" className="home-icon">
