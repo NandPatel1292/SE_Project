@@ -26,7 +26,7 @@ const SearchBox = () => {
         <input
           type="text"
           id="bar_code"
-          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
           placeholder=""
           onChange={handleBarcodeChange}
         />
@@ -41,7 +41,7 @@ const SearchBox = () => {
         <input
           type="text"
           id="item_name"
-          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
           placeholder="Amul Butter"
           onChange={handleItemNameChange}
         />
@@ -56,7 +56,7 @@ const SearchBox = () => {
         <input
           type="text"
           id="category"
-          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
           placeholder="Butter"
           onChange={handleCategoryChange}
         />
@@ -71,7 +71,7 @@ const SearchBox = () => {
         <input
           type="text"
           id="brand"
-          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
           placeholder=""
           onChange={handleBrandChange}
         />

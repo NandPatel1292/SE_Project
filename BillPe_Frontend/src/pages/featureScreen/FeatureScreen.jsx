@@ -16,7 +16,7 @@ const FeatureScreen = () => {
         <div className="flex mb-4 gap-8">
           <Link
             to={"/generate-bill"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl shadow hover:scale-105 transition-transform "
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl shadow hover:scale-105 transition-transform "
           >
             <img
               className="rounded-t-lg w-1/3 mt-6"
@@ -32,7 +32,7 @@ const FeatureScreen = () => {
 
           <Link
             to={"/sales-report"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={reports} alt="" />
             <div className="p-5">
@@ -44,7 +44,7 @@ const FeatureScreen = () => {
 
           <Link
             to={"/manage-bills"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={manageBill} alt="" />
             <div className="p-5">
@@ -58,7 +58,7 @@ const FeatureScreen = () => {
         <div className="flex mb-4 gap-8">
           <Link
             to={"/manage-products"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img
               className="rounded-t-lg w-1/3 mt-6"
@@ -74,7 +74,7 @@ const FeatureScreen = () => {
 
           <Link
             to={"/bill-template"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={template} alt="" />
 
@@ -87,7 +87,7 @@ const FeatureScreen = () => {
 
           <Link
             to={"/help-desk"}
-            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-blue-800 border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
+            className="w-1/3 flex flex-col items-center justify-center max-w-sm bg-[#5228f5ff] border border-gray-200 rounded-3xl	shadow hover:scale-105 transition-transform"
           >
             <img className="rounded-t-lg w-1/3 mt-6" src={help} alt="" />
             <div className="p-5">

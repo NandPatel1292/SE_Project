@@ -89,7 +89,7 @@ const Report = () => {
           <input
             type="date"
             id="bar_code"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder=""
             //   onChange={handleBarcodeChange}
           />
@@ -104,7 +104,7 @@ const Report = () => {
           <input
             type="date"
             id="bar_code"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder=""
             //   onChange={handleBarcodeChange}
           />
@@ -119,14 +119,18 @@ const Report = () => {
           <input
             type="text"
             id="bar_code"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder=""
             //   onChange={handleBarcodeChange}
           />
         </div>
       </div>
-      <ReactECharts option={option2} />
-      <Chart />
+      <div className="flex flex-col p-20 gap-14 justify-center items-center">
+        <div className="text-2xl font-bold">Monthly sales Report</div>
+        <ReactECharts className="w-full" option={option2} />
+        <div className="text-2xl font-bold">Category wise Pie Chart</div>
+        <Chart />
+      </div>
     </>
   );
 };

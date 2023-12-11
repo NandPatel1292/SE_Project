@@ -85,7 +85,7 @@ const AddProduct = () => {
               type="text"
               name="barCode"
               id="barCode"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B] "
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
               placeholder="9852656898"
               onChange={handelChange}
             />
@@ -102,7 +102,7 @@ const AddProduct = () => {
               type="text"
               id="category"
               name="category"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
               placeholder="Butter"
               onChange={handelChange}
             />
@@ -119,7 +119,7 @@ const AddProduct = () => {
               type="text"
               id="itemName"
               name="itemName"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
               placeholder="Amul Butter"
               onChange={handelChange}
             />
@@ -136,7 +136,7 @@ const AddProduct = () => {
               type="text"
               id="brand"
               name="brand"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
               placeholder="Amul"
               onChange={handelChange}
             />
@@ -154,7 +154,7 @@ const AddProduct = () => {
                 type="radio"
                 id="priceType_1"
                 name="priceType"
-                // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+                // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
                 placeholder="Amul"
                 value="false"
                 checked={data.priceType === "false" ? true : false}
@@ -174,7 +174,7 @@ const AddProduct = () => {
                 id="priceType_2"
                 name="priceType"
                 value="true"
-                // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+                // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
                 placeholder="Amul"
                 onChange={handelChange}
               />
@@ -198,7 +198,7 @@ const AddProduct = () => {
               type="number"
               id="discount"
               name="discount"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
               placeholder="0"
               onChange={handelChange}
             />
@@ -216,7 +216,7 @@ const AddProduct = () => {
               id="weight"
               name="weight"
               disabled={data.priceType === "false" ? false : true}
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80]"
               placeholder="50"
               onChange={handelChange}
             />
@@ -233,7 +233,7 @@ const AddProduct = () => {
               type="text"
               id="gst"
               name="gst"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80]"
               placeholder="0"
               onChange={handelChange}
             />
@@ -250,7 +250,7 @@ const AddProduct = () => {
               type="number"
               id="price"
               name="price"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80]"
               placeholder="52"
               onChange={handelChange}
             />
@@ -269,7 +269,7 @@ const AddProduct = () => {
               name="sellingPrice"
               disabled
               value={data.sellingPrice}
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80]"
               placeholder="52"
               onChange={handelChange}
             />
@@ -286,7 +286,7 @@ const AddProduct = () => {
               required
               id="description"
               name="description"
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80]"
               placeholder="Describe your product here..."
               onChange={handelChange}
             />

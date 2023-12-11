@@ -83,7 +83,7 @@ const ViewAndEditBill = () => {
             type="text"
             id="ID"
             value={data._id}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B] "
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="12"
           />
         </div>
@@ -101,7 +101,7 @@ const ViewAndEditBill = () => {
             name="customerName"
             id="customerName"
             value={data.customerName}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder="Jack Job"
             onChange={handelChange}
           />
@@ -119,7 +119,7 @@ const ViewAndEditBill = () => {
             id="customerMobile"
             name="customerMobile"
             value={data.customerMobile}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder="1234567890"
             onChange={handelChange}
           />
@@ -136,7 +136,7 @@ const ViewAndEditBill = () => {
             value={data.payment.paymentType}
             type="text"
             id="payment_mode"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder="Cash"
           />
         </div>
@@ -152,7 +152,7 @@ const ViewAndEditBill = () => {
             value={data.totalAmount}
             type="text"
             id="payment_mode"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80]"
             placeholder="Cash"
           />
         </div>
@@ -162,12 +162,12 @@ const ViewAndEditBill = () => {
         <button
           type="button"
           onClick={isEdit ? handelOnClick : () => setIsEdit(true)}
-          className="flex w-32 m-7 justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          className="flex w-32 m-7 justify-center rounded-md bg-[#5228f5ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           {isEdit ? "Save" : "Edit"}
         </button>
         <a
-          className="flex items-center gap-3 w-32 m-7 justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 "
+          className="flex items-center gap-3 w-32 m-7 justify-center rounded-md bg-[#5228f5ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 "
           href="#"
         >
           <svg

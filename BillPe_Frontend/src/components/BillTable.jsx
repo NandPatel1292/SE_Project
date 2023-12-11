@@ -71,7 +71,7 @@ const BillTable = ({ tableHeaders, tableData }) => {
                   return (
                     <th
                       scope="col"
-                      className="px-6 py-3 bg-[#e5b3b391]"
+                      className="px-6 py-3 bg-[#cabdfe80]"
                       key={index}
                     >
                       {header}
@@ -80,7 +80,7 @@ const BillTable = ({ tableHeaders, tableData }) => {
                 })
               : null}
             {tableHeaders && tableHeaders.length ? (
-              <th scope="col" className="p-4 bg-[#e5b3b391]">
+              <th scope="col" className="p-4 bg-[#cabdfe80]">
                 <div className="flex items-center ">Delete</div>
               </th>
             ) : null}
@@ -94,7 +94,7 @@ const BillTable = ({ tableHeaders, tableData }) => {
                 return (
                   <tr
                     key={index}
-                    className="bg-[#FFE2E291]  border-b  hover:bg-gray-50 "
+                    className="bg-[#d7cefc64]  border-b  hover:bg-gray-50 "
                   >
                     <td className="px-6 py-4">{startingIndex + index + 1}</td>
                     <th
