@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductAsyncThunk } from "../../features/product/productSlice";
+import { updateProductAsyncThunk } from "../../features/product/productSlice";
 
 const ViewAndEditProduct = () => {
   const { id } = useParams();
   const { products } = useSelector((state) => state.product);
-  const product = products.find((product) => product._id === id);
 
-  console.log(product);
-  console.log(products);
-  console.log(id);
+  const singleProduct = products.find((product) => product._id === id);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [data, setData] = useState(product);
+  const [data, setData] = useState(singleProduct);
+
+  const [isEdit, setIsEdit] = useState(false);
 
   const gst = data.gst;
   const discount = data.discount;
@@ -50,10 +49,13 @@ const ViewAndEditProduct = () => {
     )
       return;
 
-    const res = await dispatch(addProductAsyncThunk(data));
+    console.log(data);
+
+    const res = await dispatch(updateProductAsyncThunk(data));
 
     if (res.meta.requestStatus === "fulfilled") {
-      navigate("/manage-products");
+      console.log("product edit success");
+      setIsEdit(false);
     }
   };
 
@@ -62,12 +64,9 @@ const ViewAndEditProduct = () => {
       <div className="flex justify-center items-center flex-col gap-3 mt-10">
         {/* title */}
         <div className="flex justify-center items-center flex-col gap-3">
-          <h1 className="text-2xl font-medium">Add Product</h1>
+          <h1 className="text-2xl font-medium">View and Edit Product</h1>
         </div>
-        <form
-          className="grid gap-12 mb-6 mx-6 mt-8 md:grid-cols-2 w-3/4"
-          onSubmit={onSubmitClick}
-        >
+        <div className="grid gap-12 mb-6 mx-6 mt-8 md:grid-cols-2 w-3/4">
           <div className="flex">
             <label
               htmlFor="barCode"
@@ -76,6 +75,7 @@ const ViewAndEditProduct = () => {
               Bar Code
             </label>
             <input
+              disabled={!isEdit}
               value={data.barCode}
               required
               type="text"
@@ -94,6 +94,7 @@ const ViewAndEditProduct = () => {
               Category
             </label>
             <input
+              disabled={!isEdit}
               value={data.category}
               required
               type="text"
@@ -112,6 +113,7 @@ const ViewAndEditProduct = () => {
               Item Name
             </label>
             <input
+              disabled={!isEdit}
               value={data.itemName}
               required
               type="text"
@@ -130,6 +132,7 @@ const ViewAndEditProduct = () => {
               Brand
             </label>
             <input
+              disabled={!isEdit}
               value={data.brand}
               required
               type="text"
@@ -150,13 +153,14 @@ const ViewAndEditProduct = () => {
 
             <div className="flex items-center gap-4">
               <input
+                disabled={!isEdit}
                 type="radio"
                 id="priceType_1"
                 name="priceType"
                 // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
                 placeholder="Amul"
                 value="false"
-                checked={data.priceType === "false" ? true : false}
+                checked={!data.priceType}
                 onChange={handelChange}
               />
               <label
@@ -169,13 +173,14 @@ const ViewAndEditProduct = () => {
 
             <div className="flex items-center gap-4">
               <input
+                disabled={!isEdit}
                 type="radio"
                 id="priceType_2"
                 name="priceType"
                 value="true"
                 // className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#FBFF312B]"
                 placeholder="Amul"
-                checked={data.priceType === "true" ? true : false}
+                checked={data.priceType}
                 onChange={handelChange}
               />
               <label
@@ -194,6 +199,7 @@ const ViewAndEditProduct = () => {
               Disc(%)
             </label>
             <input
+              disabled={!isEdit}
               value={data.discount}
               required
               type="number"
@@ -212,12 +218,12 @@ const ViewAndEditProduct = () => {
               Weight
             </label>
             <input
-              value={data.weight}
+              value={data.weight ? data.weight : ""}
               required
               type="number"
               id="weight"
               name="weight"
-              disabled={data.priceType === "false" ? false : true}
+              disabled={data.priceType || !isEdit}
               className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#FBFF312B]"
               placeholder="50"
               onChange={handelChange}
@@ -231,6 +237,7 @@ const ViewAndEditProduct = () => {
               GST(%)
             </label>
             <input
+              disabled={!isEdit}
               value={data.gst}
               required
               type="text"
@@ -249,6 +256,7 @@ const ViewAndEditProduct = () => {
               Price
             </label>
             <input
+              disabled={!isEdit}
               value={data.price}
               required
               type="number"
@@ -287,6 +295,7 @@ const ViewAndEditProduct = () => {
               Description
             </label>
             <textarea
+              disabled={!isEdit}
               value={data.description}
               required
               id="description"
@@ -299,15 +308,25 @@ const ViewAndEditProduct = () => {
 
           {/* add button */}
           <div className="flex justify-center items-center col-span-2">
-            <button
-              type="submit"
-              className="inline-flex justify-center items-center px-10 py-2 text-sm font-medium text-white bg-[#5228f5ff] border border-transparent rounded-md hover:bg-blue-600 focus:outline-none"
-              onClick={onSubmitClick}
-            >
-              Add
-            </button>
+            {isEdit ? (
+              <button
+                type={"button"}
+                className="inline-flex justify-center items-center px-10 py-2 text-sm font-medium text-white bg-[#5228f5ff] border border-transparent rounded-md hover:bg-blue-600 focus:outline-none"
+                onClick={onSubmitClick}
+              >
+                Save
+              </button>
+            ) : (
+              <button
+                type={"button"}
+                className="inline-flex justify-center items-center px-10 py-2 text-sm font-medium text-white bg-[#5228f5ff] border border-transparent rounded-md hover:bg-blue-600 focus:outline-none"
+                onClick={() => setIsEdit(true)}
+              >
+                Edit
+              </button>
+            )}
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
