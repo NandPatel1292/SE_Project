@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const HomePageWidget = ({ products }) => {
+const HomePageWidget = ({
+  products,
+  handelDropDownChange,
+  selectedProduct,
+}) => {
   const [data, setData] = useState([]);
   const handleFieldChange = (e, key) => {
     if (!key) {
@@ -26,6 +30,7 @@ const HomePageWidget = ({ products }) => {
             type="text"
             id="bar_code"
             disabled
+            value={selectedProduct[0]?.barCode}
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="9852656898"
             onChange={(e) => handleFieldChange(e, "barCode")}
@@ -42,6 +47,7 @@ const HomePageWidget = ({ products }) => {
             type="text"
             id="category"
             disabled
+            value={selectedProduct[0]?.category}
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             placeholder="Butter"
             onChange={(e) => handleFieldChange(e, "Category")}
@@ -54,13 +60,31 @@ const HomePageWidget = ({ products }) => {
           >
             Item Name
           </label>
-          <input
+          {/* <input
             type="text"
             id="item_name"
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             placeholder="Amul Butter"
             onChange={(e) => handleFieldChange(e, "itemName")}
-          />
+          /> */}
+          <select
+            id="countries"
+            className="bg-[#cabdfe80] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={handelDropDownChange}
+          >
+            {/* <option selected>Choose a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option> */}
+            {products.map((product) => {
+              return (
+                <option value={product._id} key={product._id}>
+                  {product.itemName} - {product.barCode}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="flex">
           <label
@@ -73,6 +97,7 @@ const HomePageWidget = ({ products }) => {
             disabled
             type="text"
             id="brand"
+            value={selectedProduct[0]?.brand}
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="Amul"
             onChange={(e) => handleFieldChange(e, "brand")}
@@ -88,6 +113,7 @@ const HomePageWidget = ({ products }) => {
           <input
             type="text"
             id="bar_code"
+            value={selectedProduct[0]?.discount}
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="0"
             onChange={(e) => handleFieldChange(e, "disc")}
@@ -104,7 +130,7 @@ const HomePageWidget = ({ products }) => {
           >
             Weight
           </label>
-          <div className="flex flex-row">
+          <div className="flex flex-row items-center">
             <div className="mx-1 align-middle ">G</div>
             <input
               type="text"
@@ -139,13 +165,14 @@ const HomePageWidget = ({ products }) => {
           >
             Rate
           </label>
-          <div className="flex flex-row">
-            <div className="mx-1 align-middle">INR</div>
+          <div className="flex flex-row items-center">
+            <div className="mx-1 align-middle">₹</div>
             <input
               disabled
               type="text"
               id="bar_code"
               placeholder="52"
+              value={selectedProduct[0]?.price}
               onChange={(e) => handleFieldChange(e, "weight")}
               className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />
@@ -164,6 +191,7 @@ const HomePageWidget = ({ products }) => {
               type="text"
               id="bar_code"
               placeholder="0"
+              value={selectedProduct[0]?.discount}
               onChange={(e) => handleFieldChange(e, "weight")}
               className="border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />
@@ -176,13 +204,14 @@ const HomePageWidget = ({ products }) => {
           >
             Amount
           </label>
-          <div className="flex flex-row">
-            <div className="mx-1 align-middle">INR</div>
+          <div className="flex flex-row items-center">
+            <div className="mx-1 align-middle">₹</div>
             <input
               disabled
               type="text"
               id="bar_code"
               placeholder="0"
+              value={selectedProduct[0]?.sellingPrice}
               onChange={(e) => handleFieldChange(e, "amount")}
               className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />

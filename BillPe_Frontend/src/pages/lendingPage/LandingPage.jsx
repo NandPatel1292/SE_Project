@@ -242,7 +242,7 @@ const Landing = (props) => {
                   <span></span>
                 </span>
                 <span className="home-pro-plan-pricing">324</span>
-                <span className="home-text23">/ month</span>
+                <span className="home-text23">/ year</span>
               </div>
               <div className="home-container16">
                 <div className="home-container17">
