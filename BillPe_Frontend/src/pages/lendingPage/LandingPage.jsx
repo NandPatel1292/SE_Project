@@ -3,6 +3,7 @@ import React from "react";
 import FeatureCard from "./FeatureCard";
 import Question from "./Question";
 import "./LandingPage.css";
+import Feature from "../../assets/features.png";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -14,7 +15,10 @@ const Landing = (props) => {
     <div className="home-container">
       <div className="home-header">
         <header data-thq="thq-navbar" className="home-navbar-interactive">
-          <span className="home-logo">Bill Pay</span>
+          <span className="home-logo">
+            <span className="text-[#5228f5ff]">Bill</span>
+            <span className="text-red-700"> Pay</span>
+          </span>
           <div data-thq="thq-navbar-nav" className="home-desktop-menu">
             <nav className="home-links">
               <span className="home-nav2 cursor-pointer">About</span>
@@ -84,6 +88,8 @@ const Landing = (props) => {
           </div>
         </header>
       </div>
+
+      {/* body */}
       <div className="home-hero">
         <div className="home-hero1">
           <div className="home-container01">
@@ -121,11 +127,7 @@ const Landing = (props) => {
               errors.
             </span>
           </div>
-          <img
-            alt="image"
-            src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTc2NjIzMnw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"
-            className="home-details-image"
-          />
+          <img alt="image" src={Feature} className="home-details-image" />
         </div>
       </div>
       <div className="home-features">
@@ -149,11 +151,11 @@ const Landing = (props) => {
                 SubHeading="Create and send professional invoices in minutes."
               ></FeatureCard>
               <FeatureCard
-                Heading="Automated Billing"
-                SubHeading="Set up recurring billing and automate payment reminders."
+                Heading="Manage Products"
+                SubHeading="Set up product, to easy your billing."
               ></FeatureCard>
               <FeatureCard
-                Heading="Expense Tracking"
+                Heading="Reporting and Analytics"
                 SubHeading="Track and categorize expenses to stay on top of your finances."
               ></FeatureCard>
               <FeatureCard
@@ -171,51 +173,52 @@ const Landing = (props) => {
               <span>Pricing</span>
               <br></br>
             </span>
-            <h2 className="home-pricing-heading heading2">
+            {/* <h2 className="home-pricing-heading heading2">
               Some title for a pricing section
             </h2>
             <span className="home-pricing-sub-heading">
               Some catchy text for a pricing section
-            </span>
+            </span> */}
           </div>
           <div className="home-container06">
             <div className="home-pricing-card">
               <div className="home-container07">
-                <span className="home-text09 heading3">Free</span>
+                <span className="home-text09 heading3">
+                  With 7 day free trial
+                </span>
                 <span className="home-free-plan-description">
                   A short description for the free plan
                 </span>
               </div>
               <div className="home-container08">
                 <span className="home-text10">
-                  <span>$</span>
+                  <span>₹</span>
                   <span></span>
                 </span>
-                <span className="home-free-plan-price">0</span>
+                <span className="home-free-plan-price">30</span>
+                <span className="home-text23">/ month</span>
               </div>
               <div className="home-container09">
                 <div className="home-container10">
                   <span className="home-text13">✔</span>
                   <span className="home-free-plan-features">
-                    A feature of the free plan
+                    Manage products
                   </span>
                 </div>
                 <div className="home-container11">
                   <span className="home-text14">✔</span>
                   <span className="home-free-plan-features1">
-                    A feature of the free plan
+                    Monthly and yearly reports
                   </span>
                 </div>
                 <div className="home-container12">
                   <span className="home-text15">✔</span>
-                  <span className="home-free-plan-features2">
-                    A feature of the free plan
-                  </span>
+                  <span className="home-free-plan-features2">Manage bills</span>
                 </div>
                 <div className="home-container13">
                   <span className="home-text16">✔</span>
                   <span className="home-free-plan-features3">
-                    A feature of the free plan
+                    Custom templates
                   </span>
                 </div>
               </div>
@@ -226,19 +229,19 @@ const Landing = (props) => {
             <div className="home-pricing-card1">
               <div className="home-container14">
                 <span className="home-text17 heading3">
-                  <span>PRO</span>
+                  <span>Premium</span>
                   <br></br>
                 </span>
                 <span className="home-pro-plan-description">
-                  A short description for the pro plan
+                  A short description for the premium plan
                 </span>
               </div>
               <div className="home-container15">
                 <span className="home-text20">
-                  <span>$</span>
+                  <span>₹</span>
                   <span></span>
                 </span>
-                <span className="home-pro-plan-pricing">20</span>
+                <span className="home-pro-plan-pricing">324</span>
                 <span className="home-text23">/ month</span>
               </div>
               <div className="home-container16">
@@ -250,25 +253,21 @@ const Landing = (props) => {
                 </div>
                 <div className="home-container18">
                   <span className="home-text26">✔</span>
-                  <span className="home-pro-plan-features">
-                    A feature of the pro plan
-                  </span>
+                  <span className="home-pro-plan-features">Generate bills</span>
                 </div>
                 <div className="home-container19">
                   <span className="home-text27">✔</span>
-                  <span className="home-pro-plan-features1">
-                    A feature of the pro plan
-                  </span>
+                  <span className="home-pro-plan-features1">Help desk</span>
                 </div>
                 <div className="home-container20">
                   <span className="home-text28">✔</span>
                   <span className="home-pro-plan-features2">
-                    A feature of the pro plan
+                    Manage customers
                   </span>
                 </div>
               </div>
               <Link to="/signup" className="home-button1 button text-center">
-                Try the PRO plan
+                Try the PREMIUM plan
               </Link>
             </div>
           </div>
@@ -409,7 +408,7 @@ const Landing = (props) => {
           <div className="home-separator"></div>
           <div className="home-container24">
             <span className="home-text50">
-              © 2023 myCompany, All Rights Reserved.
+              © 2023 BillPay, All Rights Reserved.
             </span>
             <div className="home-icon-group1">
               <svg viewBox="0 0 950.8571428571428 1024" className="home-icon10">

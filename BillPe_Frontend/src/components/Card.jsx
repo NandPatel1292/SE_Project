@@ -18,7 +18,7 @@ const Card = ({ title, offer, handleCardClick, isSelected }) => {
       >
         <h5
           // className="flex items-center p-6 h-24 text-2xl font-bold tracking-tight text-blue-950 bg-yellow-400 ">
-          className={`flex items-center p-6 h-24 text-2xl font-bold tracking-tight ${
+          className={`flex items-center p-6 h-24 text-2xl font-bold tracking-tight w-full justify-center text-center ${
             isSelected ? "text-blue-500" : "text-black"
           } bg-yellow-400 `}
         >
