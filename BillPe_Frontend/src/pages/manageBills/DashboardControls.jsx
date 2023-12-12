@@ -36,7 +36,7 @@ const DashboardControls = () => {
       </div>
       <div className=" m-2 w-full">
         <div
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold  p-4 rounded-xl w-full align-left "
+          className="bg-[#cabdfe80] hover:bg-gray-400 text-gray-800 font-bold  p-4 rounded-xl w-full align-left "
           //   onClick={handleOnclickButton}
         >
           <span className="font-bold  p-4 rounded-xl w-1/2 ">Total</span>

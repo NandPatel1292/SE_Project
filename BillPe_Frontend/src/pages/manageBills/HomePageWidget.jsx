@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HomePageWidget = () => {
+const HomePageWidget = ({ products }) => {
   const [data, setData] = useState([]);
   const handleFieldChange = (e, key) => {
     if (!key) {
@@ -11,6 +11,7 @@ const HomePageWidget = () => {
     setData(dataCopy);
     console.log(data);
   };
+
   return (
     <div className="flex justify-start items-center w-3/5 mt-4 flex-col ml-4">
       <div className="grid gap-6 mb-2 mx-2 mt-2 md:grid-cols-2 w-full ">
@@ -24,7 +25,8 @@ const HomePageWidget = () => {
           <input
             type="text"
             id="bar_code"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-300 "
+            disabled
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="9852656898"
             onChange={(e) => handleFieldChange(e, "barCode")}
           />
@@ -39,7 +41,8 @@ const HomePageWidget = () => {
           <input
             type="text"
             id="category"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-300 "
+            disabled
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             placeholder="Butter"
             onChange={(e) => handleFieldChange(e, "Category")}
           />
@@ -54,7 +57,7 @@ const HomePageWidget = () => {
           <input
             type="text"
             id="item_name"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-300 "
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             placeholder="Amul Butter"
             onChange={(e) => handleFieldChange(e, "itemName")}
           />
@@ -67,9 +70,10 @@ const HomePageWidget = () => {
             Brand
           </label>
           <input
+            disabled
             type="text"
             id="brand"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-300 "
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="Amul"
             onChange={(e) => handleFieldChange(e, "brand")}
           />
@@ -84,7 +88,7 @@ const HomePageWidget = () => {
           <input
             type="text"
             id="bar_code"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-300 "
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             placeholder="0"
             onChange={(e) => handleFieldChange(e, "disc")}
           />
@@ -107,7 +111,7 @@ const HomePageWidget = () => {
               id="bar_code"
               placeholder="0"
               onChange={(e) => handleFieldChange(e, "weight")}
-              className="border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-300 "
+              className="border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             />
           </div>
         </div>
@@ -116,7 +120,7 @@ const HomePageWidget = () => {
             htmlFor="bar_code"
             className=" mb-1 mr-1 flex items-center text-sm font-bold text-gray-900  text-left"
           >
-            Weight
+            Pic
           </label>
           <div className="flex flex-row">
             <input
@@ -124,7 +128,7 @@ const HomePageWidget = () => {
               id="bar_code"
               placeholder="0"
               onChange={(e) => handleFieldChange(e, "weight")}
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-300 "
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-[#cabdfe80] "
             />
           </div>
         </div>
@@ -138,11 +142,12 @@ const HomePageWidget = () => {
           <div className="flex flex-row">
             <div className="mx-1 align-middle">INR</div>
             <input
+              disabled
               type="text"
               id="bar_code"
               placeholder="52"
               onChange={(e) => handleFieldChange(e, "weight")}
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-300 "
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />
           </div>
         </div>
@@ -155,11 +160,12 @@ const HomePageWidget = () => {
           </label>
           <div className="flex flex-row">
             <input
+              disabled
               type="text"
               id="bar_code"
               placeholder="0"
               onChange={(e) => handleFieldChange(e, "weight")}
-              className="border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-300 "
+              className="border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />
           </div>
         </div>
@@ -173,11 +179,12 @@ const HomePageWidget = () => {
           <div className="flex flex-row">
             <div className="mx-1 align-middle">INR</div>
             <input
+              disabled
               type="text"
               id="bar_code"
               placeholder="0"
               onChange={(e) => handleFieldChange(e, "amount")}
-              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-300 "
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-[#cabdfe80] "
             />
           </div>
         </div>
